@@ -1,0 +1,2970 @@
+3 1 
+
+FEATURES
+1 0 1 0 
+TREE 0
+X[2] <= 1.9
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|gini = 0
+|samples = 50
+|values => 0 0 50 
+|class => 0 prob: 100%
+*Right*
+|X[2] <= 4.7
+|gini = 0.5
+|samples = 100
+|values => 50 50 0 
+|*Left*
+||X[0] <= 4.9
+||gini = 0.0434568
+||samples = 45
+||values => 1 44 0 
+||*Left*
+|||X[2] <= 3.3
+|||gini = 0.5
+|||samples = 2
+|||values => 1 1 0 
+|||*Left*
+||||gini = 0
+||||samples = 1
+||||values => 0 1 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 1
+||||values => 1 0 0 
+||||class => 2 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 43
+|||values => 0 43 0 
+|||class => 1 prob: 100%
+|*Right*
+||X[2] <= 5
+||gini = 0.19438
+||samples = 55
+||values => 49 6 0 
+||*Left*
+|||X[0] <= 6.3
+|||gini = 0.473373
+|||samples = 13
+|||values => 8 5 0 
+|||*Left*
+||||X[2] <= 4.9
+||||gini = 0.32
+||||samples = 10
+||||values => 8 2 0 
+||||*Left*
+|||||X[0] <= 5.9
+|||||gini = 0.408163
+|||||samples = 7
+|||||values => 5 2 0 
+|||||*Left*
+||||||X[0] <= 5.6
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 1 0 0 
+|||||||class => 2 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 0 1 0 
+|||||||class => 1 prob: 100%
+|||||*Right*
+||||||X[0] <= 6.2
+||||||gini = 0.32
+||||||samples = 5
+||||||values => 4 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 3
+|||||||values => 3 0 0 
+|||||||class => 2 prob: 100%
+||||||*Right*
+|||||||X[0] <= 6.3
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 6.3
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 6.3
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||*Right*
+|||||gini = 0
+|||||samples = 3
+|||||values => 3 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 3
+||||values => 0 3 0 
+||||class => 1 prob: 100%
+||*Right*
+|||X[0] <= 6
+|||gini = 0.0464853
+|||samples = 42
+|||values => 41 1 0 
+|||*Left*
+||||X[0] <= 5.9
+||||gini = 0.32
+||||samples = 5
+||||values => 4 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 4
+|||||values => 4 0 0 
+|||||class => 2 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 37
+||||values => 37 0 0 
+||||class => 2 prob: 100%
+2 1 
+
+FEATURES
+1 0 0 1 
+TREE 1
+X[3] <= 0.6
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|gini = 0
+|samples = 50
+|values => 0 0 50 
+|class => 0 prob: 100%
+*Right*
+|X[3] <= 1.7
+|gini = 0.5
+|samples = 100
+|values => 50 50 0 
+|*Left*
+||X[0] <= 7
+||gini = 0.168038
+||samples = 54
+||values => 5 49 0 
+||*Left*
+|||X[0] <= 4.9
+|||gini = 0.139551
+|||samples = 53
+|||values => 4 49 0 
+|||*Left*
+||||X[3] <= 1
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||X[3] <= 1.3
+||||gini = 0.110727
+||||samples = 51
+||||values => 3 48 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 27
+|||||values => 0 27 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[0] <= 6.3
+|||||gini = 0.21875
+|||||samples = 24
+|||||values => 3 21 0 
+|||||*Left*
+||||||X[0] <= 5.9
+||||||gini = 0.32
+||||||samples = 15
+||||||values => 3 12 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 4
+|||||||values => 0 4 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||X[3] <= 1.5
+|||||||gini = 0.396694
+|||||||samples = 11
+|||||||values => 3 8 0 
+|||||||*Left*
+||||||||X[0] <= 6
+||||||||gini = 0.46875
+||||||||samples = 8
+||||||||values => 3 5 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.2
+|||||||||gini = 0.444444
+|||||||||samples = 6
+|||||||||values => 2 4 0 
+|||||||||*Left*
+||||||||||gini = 0.375
+||||||||||samples = 4
+||||||||||values => 1 3 0 
+||||||||||class => 1 prob: 75%
+|||||||||*Right*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+|||||*Right*
+||||||gini = 0
+||||||samples = 9
+||||||values => 0 9 0 
+||||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 1
+|||values => 1 0 0 
+|||class => 2 prob: 100%
+|*Right*
+||X[0] <= 5.9
+||gini = 0.0425331
+||samples = 46
+||values => 45 1 0 
+||*Left*
+|||X[0] <= 5.8
+|||gini = 0.244898
+|||samples = 7
+|||values => 6 1 0 
+|||*Left*
+||||gini = 0
+||||samples = 5
+||||values => 5 0 0 
+||||class => 2 prob: 100%
+|||*Right*
+||||X[0] <= 5.9
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||X[0] <= 5.9
+|||||gini = 0.5
+|||||samples = 2
+|||||values => 1 1 0 
+|||||*Left*
+||||||X[0] <= 5.9
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||gini = nan
+|||||||samples = 0
+|||||||values => 0 0 0 
+||||||||||||*Right*
+||||||gini = nan
+||||||samples = 0
+||||||values => 0 0 0 
+||||||||||*Right*
+|||||gini = nan
+|||||samples = 0
+|||||values => 0 0 0 
+|||||||*Right*
+|||gini = 0
+|||samples = 39
+|||values => 39 0 0 
+|||class => 2 prob: 100%
+3 2 
+
+FEATURES
+1 1 0 0 
+TREE 2
+X[0] <= 5.4
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|X[1] <= 2.7
+|gini = 0.237426
+|samples = 52
+|values => 1 6 45 
+|*Left*
+||X[0] <= 4.5
+||gini = 0.44898
+||samples = 7
+||values => 1 5 1 
+||*Left*
+|||gini = 0
+|||samples = 1
+|||values => 0 0 1 
+|||class => 0 prob: 100%
+||*Right*
+|||X[0] <= 4.9
+|||gini = 0.277778
+|||samples = 6
+|||values => 1 5 0 
+|||*Left*
+||||X[1] <= 2.4
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 4
+||||values => 0 4 0 
+||||class => 1 prob: 100%
+|*Right*
+||X[0] <= 5.3
+||gini = 0.0434568
+||samples = 45
+||values => 0 1 44 
+||*Left*
+|||gini = 0
+|||samples = 39
+|||values => 0 0 39 
+|||class => 0 prob: 100%
+||*Right*
+|||X[1] <= 3
+|||gini = 0.277778
+|||samples = 6
+|||values => 0 1 5 
+|||*Left*
+||||gini = 0
+||||samples = 1
+||||values => 0 1 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 5
+||||values => 0 0 5 
+||||class => 0 prob: 100%
+*Right*
+|X[0] <= 6.1
+|gini = 0.545814
+|samples = 98
+|values => 49 44 5 
+|*Left*
+||X[1] <= 3.4
+||gini = 0.508383
+||samples = 43
+||values => 10 28 5 
+||*Left*
+|||X[0] <= 5.7
+|||gini = 0.387812
+|||samples = 38
+|||values => 10 28 0 
+|||*Left*
+||||X[0] <= 5.5
+||||gini = 0.207612
+||||samples = 17
+||||values => 2 15 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 5
+|||||values => 0 5 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[1] <= 2.5
+|||||gini = 0.277778
+|||||samples = 12
+|||||values => 2 10 0 
+|||||*Left*
+||||||X[0] <= 5.6
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 0 1 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 1 0 0 
+|||||||class => 2 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.6
+||||||gini = 0.18
+||||||samples = 10
+||||||values => 1 9 0 
+||||||*Left*
+|||||||X[1] <= 2.8
+|||||||gini = 0.32
+|||||||samples = 5
+|||||||values => 1 4 0 
+|||||||*Left*
+||||||||X[1] <= 2.7
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 0 5 0 
+|||||||class => 1 prob: 100%
+|||*Right*
+||||X[1] <= 3
+||||gini = 0.471655
+||||samples = 21
+||||values => 8 13 0 
+||||*Left*
+|||||X[1] <= 2.9
+|||||gini = 0.487535
+|||||samples = 19
+|||||values => 8 11 0 
+|||||*Left*
+||||||X[1] <= 2.8
+||||||gini = 0.459184
+||||||samples = 14
+||||||values => 5 9 0 
+||||||*Left*
+|||||||X[0] <= 5.8
+|||||||gini = 0.486111
+|||||||samples = 12
+|||||||values => 5 7 0 
+|||||||*Left*
+||||||||X[1] <= 2.6
+||||||||gini = 0.5
+||||||||samples = 6
+||||||||values => 3 3 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.7
+|||||||||gini = 0.48
+|||||||||samples = 5
+|||||||||values => 3 2 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 4
+||||||||||values => 2 2 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.6
+||||||||gini = 0.444444
+||||||||samples = 6
+||||||||values => 2 4 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.444444
+|||||||||samples = 3
+|||||||||values => 2 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 3
+|||||||||values => 0 3 0 
+|||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 2
+|||||||values => 0 2 0 
+|||||||class => 1 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.9
+||||||gini = 0.48
+||||||samples = 5
+||||||values => 3 2 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||X[0] <= 6
+|||||||gini = 0.444444
+|||||||samples = 3
+|||||||values => 2 1 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 1
+||||||||values => 1 0 0 
+||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[0] <= 6.1
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 6.1
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+|||||||||||||*Right*
+|||||gini = 0
+|||||samples = 2
+|||||values => 0 2 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 5
+|||values => 0 0 5 
+|||class => 0 prob: 100%
+|*Right*
+||X[0] <= 7
+||gini = 0.412562
+||samples = 55
+||values => 39 16 0 
+||*Left*
+|||X[1] <= 2.3
+|||gini = 0.46728
+|||samples = 43
+|||values => 27 16 0 
+|||*Left*
+||||gini = 0
+||||samples = 2
+||||values => 0 2 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||X[0] <= 6.9
+||||gini = 0.449732
+||||samples = 41
+||||values => 27 14 0 
+||||*Left*
+|||||X[1] <= 3.1
+|||||gini = 0.43875
+|||||samples = 40
+|||||values => 27 13 0 
+|||||*Left*
+||||||X[0] <= 6.5
+||||||gini = 0.470868
+||||||samples = 29
+||||||values => 18 11 0 
+||||||*Left*
+|||||||X[1] <= 2.9
+|||||||gini = 0.375
+|||||||samples = 16
+|||||||values => 12 4 0 
+|||||||*Left*
+||||||||X[0] <= 6.4
+||||||||gini = 0.444444
+||||||||samples = 12
+||||||||values => 8 4 0 
+||||||||*Left*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.396694
+|||||||||samples = 11
+|||||||||values => 8 3 0 
+|||||||||*Left*
+||||||||||gini = 0.21875
+||||||||||samples = 8
+||||||||||values => 7 1 0 
+||||||||||class => 2 prob: 87.5%
+|||||||||*Right*
+||||||||||gini = 0.444444
+||||||||||samples = 3
+||||||||||values => 1 2 0 
+||||||||||class => 1 prob: 66.6667%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 4
+||||||||values => 4 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||X[0] <= 6.6
+|||||||gini = 0.497041
+|||||||samples = 13
+|||||||values => 6 7 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 0 2 0 
+||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.5
+||||||||gini = 0.495868
+||||||||samples = 11
+||||||||values => 6 5 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.5
+|||||||||samples = 10
+|||||||||values => 5 5 0 
+|||||||||*Left*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 0 1 0 
+||||||||||class => 1 prob: 100%
+|||||||||*Right*
+||||||||||gini = 0.493827
+||||||||||samples = 9
+||||||||||values => 5 4 0 
+||||||||||class => 2 prob: 55.5556%
+|||||*Right*
+||||||X[0] <= 6.4
+||||||gini = 0.297521
+||||||samples = 11
+||||||values => 9 2 0 
+||||||*Left*
+|||||||X[1] <= 3.3
+|||||||gini = 0.444444
+|||||||samples = 6
+|||||||values => 4 2 0 
+|||||||*Left*
+||||||||X[0] <= 6.3
+||||||||gini = 0.5
+||||||||samples = 4
+||||||||values => 2 2 0 
+||||||||*Left*
+|||||||||X[0] <= 6.3
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.4
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+|||||||||||||||||*Right*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 2 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 5 0 0 
+|||||||class => 2 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 12
+|||values => 12 0 0 
+|||class => 2 prob: 100%
+3 2 
+
+FEATURES
+1 1 0 0 
+TREE 3
+X[0] <= 5.4
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|X[1] <= 2.7
+|gini = 0.237426
+|samples = 52
+|values => 1 6 45 
+|*Left*
+||X[0] <= 4.5
+||gini = 0.44898
+||samples = 7
+||values => 1 5 1 
+||*Left*
+|||gini = 0
+|||samples = 1
+|||values => 0 0 1 
+|||class => 0 prob: 100%
+||*Right*
+|||X[0] <= 4.9
+|||gini = 0.277778
+|||samples = 6
+|||values => 1 5 0 
+|||*Left*
+||||X[1] <= 2.4
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 4
+||||values => 0 4 0 
+||||class => 1 prob: 100%
+|*Right*
+||X[0] <= 5.3
+||gini = 0.0434568
+||samples = 45
+||values => 0 1 44 
+||*Left*
+|||gini = 0
+|||samples = 39
+|||values => 0 0 39 
+|||class => 0 prob: 100%
+||*Right*
+|||X[1] <= 3
+|||gini = 0.277778
+|||samples = 6
+|||values => 0 1 5 
+|||*Left*
+||||gini = 0
+||||samples = 1
+||||values => 0 1 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 5
+||||values => 0 0 5 
+||||class => 0 prob: 100%
+*Right*
+|X[0] <= 6.1
+|gini = 0.545814
+|samples = 98
+|values => 49 44 5 
+|*Left*
+||X[1] <= 3.4
+||gini = 0.508383
+||samples = 43
+||values => 10 28 5 
+||*Left*
+|||X[0] <= 5.7
+|||gini = 0.387812
+|||samples = 38
+|||values => 10 28 0 
+|||*Left*
+||||X[0] <= 5.5
+||||gini = 0.207612
+||||samples = 17
+||||values => 2 15 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 5
+|||||values => 0 5 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[1] <= 2.5
+|||||gini = 0.277778
+|||||samples = 12
+|||||values => 2 10 0 
+|||||*Left*
+||||||X[0] <= 5.6
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 0 1 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 1 0 0 
+|||||||class => 2 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.6
+||||||gini = 0.18
+||||||samples = 10
+||||||values => 1 9 0 
+||||||*Left*
+|||||||X[1] <= 2.8
+|||||||gini = 0.32
+|||||||samples = 5
+|||||||values => 1 4 0 
+|||||||*Left*
+||||||||X[1] <= 2.7
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 0 5 0 
+|||||||class => 1 prob: 100%
+|||*Right*
+||||X[1] <= 3
+||||gini = 0.471655
+||||samples = 21
+||||values => 8 13 0 
+||||*Left*
+|||||X[1] <= 2.9
+|||||gini = 0.487535
+|||||samples = 19
+|||||values => 8 11 0 
+|||||*Left*
+||||||X[1] <= 2.8
+||||||gini = 0.459184
+||||||samples = 14
+||||||values => 5 9 0 
+||||||*Left*
+|||||||X[0] <= 5.8
+|||||||gini = 0.486111
+|||||||samples = 12
+|||||||values => 5 7 0 
+|||||||*Left*
+||||||||X[1] <= 2.6
+||||||||gini = 0.5
+||||||||samples = 6
+||||||||values => 3 3 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.7
+|||||||||gini = 0.48
+|||||||||samples = 5
+|||||||||values => 3 2 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 4
+||||||||||values => 2 2 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.6
+||||||||gini = 0.444444
+||||||||samples = 6
+||||||||values => 2 4 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.444444
+|||||||||samples = 3
+|||||||||values => 2 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 3
+|||||||||values => 0 3 0 
+|||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 2
+|||||||values => 0 2 0 
+|||||||class => 1 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.9
+||||||gini = 0.48
+||||||samples = 5
+||||||values => 3 2 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||X[0] <= 6
+|||||||gini = 0.444444
+|||||||samples = 3
+|||||||values => 2 1 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 1
+||||||||values => 1 0 0 
+||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[0] <= 6.1
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 6.1
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+|||||||||||||*Right*
+|||||gini = 0
+|||||samples = 2
+|||||values => 0 2 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 5
+|||values => 0 0 5 
+|||class => 0 prob: 100%
+|*Right*
+||X[0] <= 7
+||gini = 0.412562
+||samples = 55
+||values => 39 16 0 
+||*Left*
+|||X[1] <= 2.3
+|||gini = 0.46728
+|||samples = 43
+|||values => 27 16 0 
+|||*Left*
+||||gini = 0
+||||samples = 2
+||||values => 0 2 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||X[0] <= 6.9
+||||gini = 0.449732
+||||samples = 41
+||||values => 27 14 0 
+||||*Left*
+|||||X[1] <= 3.1
+|||||gini = 0.43875
+|||||samples = 40
+|||||values => 27 13 0 
+|||||*Left*
+||||||X[0] <= 6.5
+||||||gini = 0.470868
+||||||samples = 29
+||||||values => 18 11 0 
+||||||*Left*
+|||||||X[1] <= 2.9
+|||||||gini = 0.375
+|||||||samples = 16
+|||||||values => 12 4 0 
+|||||||*Left*
+||||||||X[0] <= 6.4
+||||||||gini = 0.444444
+||||||||samples = 12
+||||||||values => 8 4 0 
+||||||||*Left*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.396694
+|||||||||samples = 11
+|||||||||values => 8 3 0 
+|||||||||*Left*
+||||||||||gini = 0.21875
+||||||||||samples = 8
+||||||||||values => 7 1 0 
+||||||||||class => 2 prob: 87.5%
+|||||||||*Right*
+||||||||||gini = 0.444444
+||||||||||samples = 3
+||||||||||values => 1 2 0 
+||||||||||class => 1 prob: 66.6667%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 4
+||||||||values => 4 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||X[0] <= 6.6
+|||||||gini = 0.497041
+|||||||samples = 13
+|||||||values => 6 7 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 0 2 0 
+||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.5
+||||||||gini = 0.495868
+||||||||samples = 11
+||||||||values => 6 5 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.5
+|||||||||samples = 10
+|||||||||values => 5 5 0 
+|||||||||*Left*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 0 1 0 
+||||||||||class => 1 prob: 100%
+|||||||||*Right*
+||||||||||gini = 0.493827
+||||||||||samples = 9
+||||||||||values => 5 4 0 
+||||||||||class => 2 prob: 55.5556%
+|||||*Right*
+||||||X[0] <= 6.4
+||||||gini = 0.297521
+||||||samples = 11
+||||||values => 9 2 0 
+||||||*Left*
+|||||||X[1] <= 3.3
+|||||||gini = 0.444444
+|||||||samples = 6
+|||||||values => 4 2 0 
+|||||||*Left*
+||||||||X[0] <= 6.3
+||||||||gini = 0.5
+||||||||samples = 4
+||||||||values => 2 2 0 
+||||||||*Left*
+|||||||||X[0] <= 6.3
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.4
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+|||||||||||||||||*Right*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 2 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 5 0 0 
+|||||||class => 2 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 12
+|||values => 12 0 0 
+|||class => 2 prob: 100%
+1 2 
+
+FEATURES
+1 0 0 1 
+TREE 4
+X[3] <= 0.6
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|gini = 0
+|samples = 50
+|values => 0 0 50 
+|class => 0 prob: 100%
+*Right*
+|X[3] <= 1.7
+|gini = 0.5
+|samples = 100
+|values => 50 50 0 
+|*Left*
+||X[0] <= 7
+||gini = 0.168038
+||samples = 54
+||values => 5 49 0 
+||*Left*
+|||X[0] <= 4.9
+|||gini = 0.139551
+|||samples = 53
+|||values => 4 49 0 
+|||*Left*
+||||X[3] <= 1
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||X[3] <= 1.3
+||||gini = 0.110727
+||||samples = 51
+||||values => 3 48 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 27
+|||||values => 0 27 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[0] <= 6.3
+|||||gini = 0.21875
+|||||samples = 24
+|||||values => 3 21 0 
+|||||*Left*
+||||||X[0] <= 5.9
+||||||gini = 0.32
+||||||samples = 15
+||||||values => 3 12 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 4
+|||||||values => 0 4 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||X[3] <= 1.5
+|||||||gini = 0.396694
+|||||||samples = 11
+|||||||values => 3 8 0 
+|||||||*Left*
+||||||||X[0] <= 6
+||||||||gini = 0.46875
+||||||||samples = 8
+||||||||values => 3 5 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.2
+|||||||||gini = 0.444444
+|||||||||samples = 6
+|||||||||values => 2 4 0 
+|||||||||*Left*
+||||||||||gini = 0.375
+||||||||||samples = 4
+||||||||||values => 1 3 0 
+||||||||||class => 1 prob: 75%
+|||||||||*Right*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+|||||*Right*
+||||||gini = 0
+||||||samples = 9
+||||||values => 0 9 0 
+||||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 1
+|||values => 1 0 0 
+|||class => 2 prob: 100%
+|*Right*
+||X[0] <= 5.9
+||gini = 0.0425331
+||samples = 46
+||values => 45 1 0 
+||*Left*
+|||X[0] <= 5.8
+|||gini = 0.244898
+|||samples = 7
+|||values => 6 1 0 
+|||*Left*
+||||gini = 0
+||||samples = 5
+||||values => 5 0 0 
+||||class => 2 prob: 100%
+|||*Right*
+||||X[0] <= 5.9
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||X[0] <= 5.9
+|||||gini = 0.5
+|||||samples = 2
+|||||values => 1 1 0 
+|||||*Left*
+||||||X[0] <= 5.9
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||gini = nan
+|||||||samples = 0
+|||||||values => 0 0 0 
+||||||||||||*Right*
+||||||gini = nan
+||||||samples = 0
+||||||values => 0 0 0 
+||||||||||*Right*
+|||||gini = nan
+|||||samples = 0
+|||||values => 0 0 0 
+|||||||*Right*
+|||gini = 0
+|||samples = 39
+|||values => 39 0 0 
+|||class => 2 prob: 100%
+2 3 
+
+FEATURES
+1 1 0 0 
+TREE 5
+X[0] <= 5.4
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|X[1] <= 2.7
+|gini = 0.237426
+|samples = 52
+|values => 1 6 45 
+|*Left*
+||X[0] <= 4.5
+||gini = 0.44898
+||samples = 7
+||values => 1 5 1 
+||*Left*
+|||gini = 0
+|||samples = 1
+|||values => 0 0 1 
+|||class => 0 prob: 100%
+||*Right*
+|||X[0] <= 4.9
+|||gini = 0.277778
+|||samples = 6
+|||values => 1 5 0 
+|||*Left*
+||||X[1] <= 2.4
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 4
+||||values => 0 4 0 
+||||class => 1 prob: 100%
+|*Right*
+||X[0] <= 5.3
+||gini = 0.0434568
+||samples = 45
+||values => 0 1 44 
+||*Left*
+|||gini = 0
+|||samples = 39
+|||values => 0 0 39 
+|||class => 0 prob: 100%
+||*Right*
+|||X[1] <= 3
+|||gini = 0.277778
+|||samples = 6
+|||values => 0 1 5 
+|||*Left*
+||||gini = 0
+||||samples = 1
+||||values => 0 1 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 5
+||||values => 0 0 5 
+||||class => 0 prob: 100%
+*Right*
+|X[0] <= 6.1
+|gini = 0.545814
+|samples = 98
+|values => 49 44 5 
+|*Left*
+||X[1] <= 3.4
+||gini = 0.508383
+||samples = 43
+||values => 10 28 5 
+||*Left*
+|||X[0] <= 5.7
+|||gini = 0.387812
+|||samples = 38
+|||values => 10 28 0 
+|||*Left*
+||||X[0] <= 5.5
+||||gini = 0.207612
+||||samples = 17
+||||values => 2 15 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 5
+|||||values => 0 5 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[1] <= 2.5
+|||||gini = 0.277778
+|||||samples = 12
+|||||values => 2 10 0 
+|||||*Left*
+||||||X[0] <= 5.6
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 0 1 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 1 0 0 
+|||||||class => 2 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.6
+||||||gini = 0.18
+||||||samples = 10
+||||||values => 1 9 0 
+||||||*Left*
+|||||||X[1] <= 2.8
+|||||||gini = 0.32
+|||||||samples = 5
+|||||||values => 1 4 0 
+|||||||*Left*
+||||||||X[1] <= 2.7
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 0 5 0 
+|||||||class => 1 prob: 100%
+|||*Right*
+||||X[1] <= 3
+||||gini = 0.471655
+||||samples = 21
+||||values => 8 13 0 
+||||*Left*
+|||||X[1] <= 2.9
+|||||gini = 0.487535
+|||||samples = 19
+|||||values => 8 11 0 
+|||||*Left*
+||||||X[1] <= 2.8
+||||||gini = 0.459184
+||||||samples = 14
+||||||values => 5 9 0 
+||||||*Left*
+|||||||X[0] <= 5.8
+|||||||gini = 0.486111
+|||||||samples = 12
+|||||||values => 5 7 0 
+|||||||*Left*
+||||||||X[1] <= 2.6
+||||||||gini = 0.5
+||||||||samples = 6
+||||||||values => 3 3 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.7
+|||||||||gini = 0.48
+|||||||||samples = 5
+|||||||||values => 3 2 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 4
+||||||||||values => 2 2 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.6
+||||||||gini = 0.444444
+||||||||samples = 6
+||||||||values => 2 4 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.444444
+|||||||||samples = 3
+|||||||||values => 2 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 3
+|||||||||values => 0 3 0 
+|||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 2
+|||||||values => 0 2 0 
+|||||||class => 1 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.9
+||||||gini = 0.48
+||||||samples = 5
+||||||values => 3 2 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||X[0] <= 6
+|||||||gini = 0.444444
+|||||||samples = 3
+|||||||values => 2 1 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 1
+||||||||values => 1 0 0 
+||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[0] <= 6.1
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 6.1
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+|||||||||||||*Right*
+|||||gini = 0
+|||||samples = 2
+|||||values => 0 2 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 5
+|||values => 0 0 5 
+|||class => 0 prob: 100%
+|*Right*
+||X[0] <= 7
+||gini = 0.412562
+||samples = 55
+||values => 39 16 0 
+||*Left*
+|||X[1] <= 2.3
+|||gini = 0.46728
+|||samples = 43
+|||values => 27 16 0 
+|||*Left*
+||||gini = 0
+||||samples = 2
+||||values => 0 2 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||X[0] <= 6.9
+||||gini = 0.449732
+||||samples = 41
+||||values => 27 14 0 
+||||*Left*
+|||||X[1] <= 3.1
+|||||gini = 0.43875
+|||||samples = 40
+|||||values => 27 13 0 
+|||||*Left*
+||||||X[0] <= 6.5
+||||||gini = 0.470868
+||||||samples = 29
+||||||values => 18 11 0 
+||||||*Left*
+|||||||X[1] <= 2.9
+|||||||gini = 0.375
+|||||||samples = 16
+|||||||values => 12 4 0 
+|||||||*Left*
+||||||||X[0] <= 6.4
+||||||||gini = 0.444444
+||||||||samples = 12
+||||||||values => 8 4 0 
+||||||||*Left*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.396694
+|||||||||samples = 11
+|||||||||values => 8 3 0 
+|||||||||*Left*
+||||||||||gini = 0.21875
+||||||||||samples = 8
+||||||||||values => 7 1 0 
+||||||||||class => 2 prob: 87.5%
+|||||||||*Right*
+||||||||||gini = 0.444444
+||||||||||samples = 3
+||||||||||values => 1 2 0 
+||||||||||class => 1 prob: 66.6667%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 4
+||||||||values => 4 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||X[0] <= 6.6
+|||||||gini = 0.497041
+|||||||samples = 13
+|||||||values => 6 7 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 0 2 0 
+||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.5
+||||||||gini = 0.495868
+||||||||samples = 11
+||||||||values => 6 5 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.5
+|||||||||samples = 10
+|||||||||values => 5 5 0 
+|||||||||*Left*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 0 1 0 
+||||||||||class => 1 prob: 100%
+|||||||||*Right*
+||||||||||gini = 0.493827
+||||||||||samples = 9
+||||||||||values => 5 4 0 
+||||||||||class => 2 prob: 55.5556%
+|||||*Right*
+||||||X[0] <= 6.4
+||||||gini = 0.297521
+||||||samples = 11
+||||||values => 9 2 0 
+||||||*Left*
+|||||||X[1] <= 3.3
+|||||||gini = 0.444444
+|||||||samples = 6
+|||||||values => 4 2 0 
+|||||||*Left*
+||||||||X[0] <= 6.3
+||||||||gini = 0.5
+||||||||samples = 4
+||||||||values => 2 2 0 
+||||||||*Left*
+|||||||||X[0] <= 6.3
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.4
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+|||||||||||||||||*Right*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 2 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 5 0 0 
+|||||||class => 2 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 12
+|||values => 12 0 0 
+|||class => 2 prob: 100%
+2 3 
+
+FEATURES
+1 1 0 0 
+TREE 6
+X[0] <= 5.4
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|X[1] <= 2.7
+|gini = 0.237426
+|samples = 52
+|values => 1 6 45 
+|*Left*
+||X[0] <= 4.5
+||gini = 0.44898
+||samples = 7
+||values => 1 5 1 
+||*Left*
+|||gini = 0
+|||samples = 1
+|||values => 0 0 1 
+|||class => 0 prob: 100%
+||*Right*
+|||X[0] <= 4.9
+|||gini = 0.277778
+|||samples = 6
+|||values => 1 5 0 
+|||*Left*
+||||X[1] <= 2.4
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 4
+||||values => 0 4 0 
+||||class => 1 prob: 100%
+|*Right*
+||X[0] <= 5.3
+||gini = 0.0434568
+||samples = 45
+||values => 0 1 44 
+||*Left*
+|||gini = 0
+|||samples = 39
+|||values => 0 0 39 
+|||class => 0 prob: 100%
+||*Right*
+|||X[1] <= 3
+|||gini = 0.277778
+|||samples = 6
+|||values => 0 1 5 
+|||*Left*
+||||gini = 0
+||||samples = 1
+||||values => 0 1 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 5
+||||values => 0 0 5 
+||||class => 0 prob: 100%
+*Right*
+|X[0] <= 6.1
+|gini = 0.545814
+|samples = 98
+|values => 49 44 5 
+|*Left*
+||X[1] <= 3.4
+||gini = 0.508383
+||samples = 43
+||values => 10 28 5 
+||*Left*
+|||X[0] <= 5.7
+|||gini = 0.387812
+|||samples = 38
+|||values => 10 28 0 
+|||*Left*
+||||X[0] <= 5.5
+||||gini = 0.207612
+||||samples = 17
+||||values => 2 15 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 5
+|||||values => 0 5 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[1] <= 2.5
+|||||gini = 0.277778
+|||||samples = 12
+|||||values => 2 10 0 
+|||||*Left*
+||||||X[0] <= 5.6
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 0 1 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 1 0 0 
+|||||||class => 2 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.6
+||||||gini = 0.18
+||||||samples = 10
+||||||values => 1 9 0 
+||||||*Left*
+|||||||X[1] <= 2.8
+|||||||gini = 0.32
+|||||||samples = 5
+|||||||values => 1 4 0 
+|||||||*Left*
+||||||||X[1] <= 2.7
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 0 5 0 
+|||||||class => 1 prob: 100%
+|||*Right*
+||||X[1] <= 3
+||||gini = 0.471655
+||||samples = 21
+||||values => 8 13 0 
+||||*Left*
+|||||X[1] <= 2.9
+|||||gini = 0.487535
+|||||samples = 19
+|||||values => 8 11 0 
+|||||*Left*
+||||||X[1] <= 2.8
+||||||gini = 0.459184
+||||||samples = 14
+||||||values => 5 9 0 
+||||||*Left*
+|||||||X[0] <= 5.8
+|||||||gini = 0.486111
+|||||||samples = 12
+|||||||values => 5 7 0 
+|||||||*Left*
+||||||||X[1] <= 2.6
+||||||||gini = 0.5
+||||||||samples = 6
+||||||||values => 3 3 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.7
+|||||||||gini = 0.48
+|||||||||samples = 5
+|||||||||values => 3 2 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 4
+||||||||||values => 2 2 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.6
+||||||||gini = 0.444444
+||||||||samples = 6
+||||||||values => 2 4 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.444444
+|||||||||samples = 3
+|||||||||values => 2 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 1 0 0 
+||||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 3
+|||||||||values => 0 3 0 
+|||||||||class => 1 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 2
+|||||||values => 0 2 0 
+|||||||class => 1 prob: 100%
+|||||*Right*
+||||||X[0] <= 5.9
+||||||gini = 0.48
+||||||samples = 5
+||||||values => 3 2 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||X[0] <= 6
+|||||||gini = 0.444444
+|||||||samples = 3
+|||||||values => 2 1 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 1
+||||||||values => 1 0 0 
+||||||||class => 2 prob: 100%
+|||||||*Right*
+||||||||X[0] <= 6.1
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 6.1
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+|||||||||||||*Right*
+|||||gini = 0
+|||||samples = 2
+|||||values => 0 2 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 5
+|||values => 0 0 5 
+|||class => 0 prob: 100%
+|*Right*
+||X[0] <= 7
+||gini = 0.412562
+||samples = 55
+||values => 39 16 0 
+||*Left*
+|||X[1] <= 2.3
+|||gini = 0.46728
+|||samples = 43
+|||values => 27 16 0 
+|||*Left*
+||||gini = 0
+||||samples = 2
+||||values => 0 2 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||X[0] <= 6.9
+||||gini = 0.449732
+||||samples = 41
+||||values => 27 14 0 
+||||*Left*
+|||||X[1] <= 3.1
+|||||gini = 0.43875
+|||||samples = 40
+|||||values => 27 13 0 
+|||||*Left*
+||||||X[0] <= 6.5
+||||||gini = 0.470868
+||||||samples = 29
+||||||values => 18 11 0 
+||||||*Left*
+|||||||X[1] <= 2.9
+|||||||gini = 0.375
+|||||||samples = 16
+|||||||values => 12 4 0 
+|||||||*Left*
+||||||||X[0] <= 6.4
+||||||||gini = 0.444444
+||||||||samples = 12
+||||||||values => 8 4 0 
+||||||||*Left*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.396694
+|||||||||samples = 11
+|||||||||values => 8 3 0 
+|||||||||*Left*
+||||||||||gini = 0.21875
+||||||||||samples = 8
+||||||||||values => 7 1 0 
+||||||||||class => 2 prob: 87.5%
+|||||||||*Right*
+||||||||||gini = 0.444444
+||||||||||samples = 3
+||||||||||values => 1 2 0 
+||||||||||class => 1 prob: 66.6667%
+||||||||*Right*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 0 1 0 
+|||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 4
+||||||||values => 4 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||X[0] <= 6.6
+|||||||gini = 0.497041
+|||||||samples = 13
+|||||||values => 6 7 0 
+|||||||*Left*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 0 2 0 
+||||||||class => 1 prob: 100%
+|||||||*Right*
+||||||||X[1] <= 2.5
+||||||||gini = 0.495868
+||||||||samples = 11
+||||||||values => 6 5 0 
+||||||||*Left*
+|||||||||gini = 0
+|||||||||samples = 1
+|||||||||values => 1 0 0 
+|||||||||class => 2 prob: 100%
+||||||||*Right*
+|||||||||X[1] <= 2.8
+|||||||||gini = 0.5
+|||||||||samples = 10
+|||||||||values => 5 5 0 
+|||||||||*Left*
+||||||||||gini = 0
+||||||||||samples = 1
+||||||||||values => 0 1 0 
+||||||||||class => 1 prob: 100%
+|||||||||*Right*
+||||||||||gini = 0.493827
+||||||||||samples = 9
+||||||||||values => 5 4 0 
+||||||||||class => 2 prob: 55.5556%
+|||||*Right*
+||||||X[0] <= 6.4
+||||||gini = 0.297521
+||||||samples = 11
+||||||values => 9 2 0 
+||||||*Left*
+|||||||X[1] <= 3.3
+|||||||gini = 0.444444
+|||||||samples = 6
+|||||||values => 4 2 0 
+|||||||*Left*
+||||||||X[0] <= 6.3
+||||||||gini = 0.5
+||||||||samples = 4
+||||||||values => 2 2 0 
+||||||||*Left*
+|||||||||X[0] <= 6.3
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.4
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+|||||||||||||||||*Right*
+||||||||gini = 0
+||||||||samples = 2
+||||||||values => 2 0 0 
+||||||||class => 2 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 5
+|||||||values => 5 0 0 
+|||||||class => 2 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 12
+|||values => 12 0 0 
+|||class => 2 prob: 100%
+3 1 
+
+FEATURES
+1 0 1 0 
+TREE 7
+X[2] <= 1.9
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|gini = 0
+|samples = 50
+|values => 0 0 50 
+|class => 0 prob: 100%
+*Right*
+|X[2] <= 4.7
+|gini = 0.5
+|samples = 100
+|values => 50 50 0 
+|*Left*
+||X[0] <= 4.9
+||gini = 0.0434568
+||samples = 45
+||values => 1 44 0 
+||*Left*
+|||X[2] <= 3.3
+|||gini = 0.5
+|||samples = 2
+|||values => 1 1 0 
+|||*Left*
+||||gini = 0
+||||samples = 1
+||||values => 0 1 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 1
+||||values => 1 0 0 
+||||class => 2 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 43
+|||values => 0 43 0 
+|||class => 1 prob: 100%
+|*Right*
+||X[2] <= 5
+||gini = 0.19438
+||samples = 55
+||values => 49 6 0 
+||*Left*
+|||X[0] <= 6.3
+|||gini = 0.473373
+|||samples = 13
+|||values => 8 5 0 
+|||*Left*
+||||X[2] <= 4.9
+||||gini = 0.32
+||||samples = 10
+||||values => 8 2 0 
+||||*Left*
+|||||X[0] <= 5.9
+|||||gini = 0.408163
+|||||samples = 7
+|||||values => 5 2 0 
+|||||*Left*
+||||||X[0] <= 5.6
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 1 0 0 
+|||||||class => 2 prob: 100%
+||||||*Right*
+|||||||gini = 0
+|||||||samples = 1
+|||||||values => 0 1 0 
+|||||||class => 1 prob: 100%
+|||||*Right*
+||||||X[0] <= 6.2
+||||||gini = 0.32
+||||||samples = 5
+||||||values => 4 1 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 3
+|||||||values => 3 0 0 
+|||||||class => 2 prob: 100%
+||||||*Right*
+|||||||X[0] <= 6.3
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 6.3
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 6.3
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||*Right*
+|||||gini = 0
+|||||samples = 3
+|||||values => 3 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 3
+||||values => 0 3 0 
+||||class => 1 prob: 100%
+||*Right*
+|||X[0] <= 6
+|||gini = 0.0464853
+|||samples = 42
+|||values => 41 1 0 
+|||*Left*
+||||X[0] <= 5.9
+||||gini = 0.32
+||||samples = 5
+||||values => 4 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 4
+|||||values => 4 0 0 
+|||||class => 2 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 37
+||||values => 37 0 0 
+||||class => 2 prob: 100%
+1 0 
+
+FEATURES
+0 0 1 1 
+TREE 8
+X[2] <= 1.9
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|gini = 0
+|samples = 50
+|values => 0 0 50 
+|class => 0 prob: 100%
+*Right*
+|X[3] <= 1.7
+|gini = 0.5
+|samples = 100
+|values => 50 50 0 
+|*Left*
+||X[2] <= 4.9
+||gini = 0.168038
+||samples = 54
+||values => 5 49 0 
+||*Left*
+|||X[3] <= 1.6
+|||gini = 0.0407986
+|||samples = 48
+|||values => 1 47 0 
+|||*Left*
+||||gini = 0
+||||samples = 47
+||||values => 0 47 0 
+||||class => 1 prob: 100%
+|||*Right*
+||||gini = 0
+||||samples = 1
+||||values => 1 0 0 
+||||class => 2 prob: 100%
+||*Right*
+|||X[3] <= 1.5
+|||gini = 0.444444
+|||samples = 6
+|||values => 4 2 0 
+|||*Left*
+||||gini = 0
+||||samples = 3
+||||values => 3 0 0 
+||||class => 2 prob: 100%
+|||*Right*
+||||X[2] <= 5.1
+||||gini = 0.444444
+||||samples = 3
+||||values => 1 2 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 2
+|||||values => 0 2 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|*Right*
+||X[2] <= 4.8
+||gini = 0.0425331
+||samples = 46
+||values => 45 1 0 
+||*Left*
+|||X[2] <= 4.8
+|||gini = 0.444444
+|||samples = 3
+|||values => 2 1 0 
+|||*Left*
+||||X[2] <= 4.8
+||||gini = 0.444444
+||||samples = 3
+||||values => 2 1 0 
+||||*Left*
+|||||X[2] <= 4.8
+|||||gini = 0.444444
+|||||samples = 3
+|||||values => 2 1 0 
+|||||*Left*
+||||||X[2] <= 4.8
+||||||gini = 0.444444
+||||||samples = 3
+||||||values => 2 1 0 
+||||||*Left*
+|||||||X[2] <= 4.8
+|||||||gini = 0.444444
+|||||||samples = 3
+|||||||values => 2 1 0 
+|||||||*Left*
+||||||||X[2] <= 4.8
+||||||||gini = 0.444444
+||||||||samples = 3
+||||||||values => 2 1 0 
+||||||||*Left*
+|||||||||X[2] <= 4.8
+|||||||||gini = 0.444444
+|||||||||samples = 3
+|||||||||values => 2 1 0 
+|||||||||*Left*
+||||||||||gini = 0.444444
+||||||||||samples = 3
+||||||||||values => 2 1 0 
+||||||||||class => 2 prob: 66.6667%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||gini = nan
+|||||||samples = 0
+|||||||values => 0 0 0 
+||||||||||||*Right*
+||||||gini = nan
+||||||samples = 0
+||||||values => 0 0 0 
+||||||||||*Right*
+|||||gini = nan
+|||||samples = 0
+|||||values => 0 0 0 
+||||||||*Right*
+||||gini = nan
+||||samples = 0
+||||values => 0 0 0 
+||||||*Right*
+|||gini = 0
+|||samples = 43
+|||values => 43 0 0 
+|||class => 2 prob: 100%
+1 2 
+
+FEATURES
+1 0 0 1 
+TREE 9
+X[3] <= 0.6
+gini = 0.666667
+samples = 150
+values => 50 50 50 
+*Left*
+|gini = 0
+|samples = 50
+|values => 0 0 50 
+|class => 0 prob: 100%
+*Right*
+|X[3] <= 1.7
+|gini = 0.5
+|samples = 100
+|values => 50 50 0 
+|*Left*
+||X[0] <= 7
+||gini = 0.168038
+||samples = 54
+||values => 5 49 0 
+||*Left*
+|||X[0] <= 4.9
+|||gini = 0.139551
+|||samples = 53
+|||values => 4 49 0 
+|||*Left*
+||||X[3] <= 1
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 1
+|||||values => 0 1 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||gini = 0
+|||||samples = 1
+|||||values => 1 0 0 
+|||||class => 2 prob: 100%
+|||*Right*
+||||X[3] <= 1.3
+||||gini = 0.110727
+||||samples = 51
+||||values => 3 48 0 
+||||*Left*
+|||||gini = 0
+|||||samples = 27
+|||||values => 0 27 0 
+|||||class => 1 prob: 100%
+||||*Right*
+|||||X[0] <= 6.3
+|||||gini = 0.21875
+|||||samples = 24
+|||||values => 3 21 0 
+|||||*Left*
+||||||X[0] <= 5.9
+||||||gini = 0.32
+||||||samples = 15
+||||||values => 3 12 0 
+||||||*Left*
+|||||||gini = 0
+|||||||samples = 4
+|||||||values => 0 4 0 
+|||||||class => 1 prob: 100%
+||||||*Right*
+|||||||X[3] <= 1.5
+|||||||gini = 0.396694
+|||||||samples = 11
+|||||||values => 3 8 0 
+|||||||*Left*
+||||||||X[0] <= 6
+||||||||gini = 0.46875
+||||||||samples = 8
+||||||||values => 3 5 0 
+||||||||*Left*
+|||||||||X[0] <= 6
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||X[0] <= 6.2
+|||||||||gini = 0.444444
+|||||||||samples = 6
+|||||||||values => 2 4 0 
+|||||||||*Left*
+||||||||||gini = 0.375
+||||||||||samples = 4
+||||||||||values => 1 3 0 
+||||||||||class => 1 prob: 75%
+|||||||||*Right*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||*Right*
+||||||||gini = 0
+||||||||samples = 3
+||||||||values => 0 3 0 
+||||||||class => 1 prob: 100%
+|||||*Right*
+||||||gini = 0
+||||||samples = 9
+||||||values => 0 9 0 
+||||||class => 1 prob: 100%
+||*Right*
+|||gini = 0
+|||samples = 1
+|||values => 1 0 0 
+|||class => 2 prob: 100%
+|*Right*
+||X[0] <= 5.9
+||gini = 0.0425331
+||samples = 46
+||values => 45 1 0 
+||*Left*
+|||X[0] <= 5.8
+|||gini = 0.244898
+|||samples = 7
+|||values => 6 1 0 
+|||*Left*
+||||gini = 0
+||||samples = 5
+||||values => 5 0 0 
+||||class => 2 prob: 100%
+|||*Right*
+||||X[0] <= 5.9
+||||gini = 0.5
+||||samples = 2
+||||values => 1 1 0 
+||||*Left*
+|||||X[0] <= 5.9
+|||||gini = 0.5
+|||||samples = 2
+|||||values => 1 1 0 
+|||||*Left*
+||||||X[0] <= 5.9
+||||||gini = 0.5
+||||||samples = 2
+||||||values => 1 1 0 
+||||||*Left*
+|||||||X[0] <= 5.9
+|||||||gini = 0.5
+|||||||samples = 2
+|||||||values => 1 1 0 
+|||||||*Left*
+||||||||X[0] <= 5.9
+||||||||gini = 0.5
+||||||||samples = 2
+||||||||values => 1 1 0 
+||||||||*Left*
+|||||||||X[0] <= 5.9
+|||||||||gini = 0.5
+|||||||||samples = 2
+|||||||||values => 1 1 0 
+|||||||||*Left*
+||||||||||gini = 0.5
+||||||||||samples = 2
+||||||||||values => 1 1 0 
+||||||||||class => 2 prob: 50%
+|||||||||*Right*
+||||||||||gini = nan
+||||||||||samples = 0
+||||||||||values => 0 0 0 
+||||||||||||||||||*Right*
+|||||||||gini = nan
+|||||||||samples = 0
+|||||||||values => 0 0 0 
+||||||||||||||||*Right*
+||||||||gini = nan
+||||||||samples = 0
+||||||||values => 0 0 0 
+||||||||||||||*Right*
+|||||||gini = nan
+|||||||samples = 0
+|||||||values => 0 0 0 
+||||||||||||*Right*
+||||||gini = nan
+||||||samples = 0
+||||||values => 0 0 0 
+||||||||||*Right*
+|||||gini = nan
+|||||samples = 0
+|||||values => 0 0 0 
+|||||||*Right*
+|||gini = 0
+|||samples = 39
+|||values => 39 0 0 
+|||class => 2 prob: 100%
+
+Prediction
+GANE
+class label: 1 prob: 1
+GANE
+class label: 1 prob: 1
+GANE
+class label: 2 prob: 0.5
+GANE
+class label: 2 prob: 0.5
+GANE
+class label: 1 prob: 1
+GANE
+class label: 2 prob: 0.5
+GANE
+class label: 2 prob: 0.5
+GANE
+class label: 1 prob: 1
+GANE
+class label: 1 prob: 1
+GANE
+class label: 1 prob: 1
