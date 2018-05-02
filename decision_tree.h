@@ -13,6 +13,7 @@
 using std::string;
 
 struct DecisionTree {
+  int id;
   Node *rootNode;
   int max_depth;
   DecisionTree(){};
@@ -198,6 +199,7 @@ Node *DecisionTree::Build(DataSet &sample, int curr_depth) {
   if (curr_depth == max_depth || sample_gini == 0 ||
       ShouldStop(frequency) == 0) {
     rootNode->is_leaf = true;
+    rootNode->Classify();
     return rootNode;
   }
 
@@ -226,15 +228,16 @@ Node *DecisionTree::Build(DataSet &sample, int curr_depth) {
 
 int Predict(const std::vector<double> &query, Node *curr_node) { 
   if (curr_node->is_leaf) {
-    std::cout << "GANE" << std::endl;
+    // std::cout << "GANE" << std::endl;
     int clss;
     double prob;
     std::tie(clss, prob) = curr_node->class_label;
-    std::cout << "class label: " << clss << " prob: " << prob << std::endl;
-    for (auto it: curr_node->frequency) {
-      std::cout << it.first << ":" << it.second << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "class label: " << clss << " prob: " << prob << std::endl;
+    // std::cout << "Frequency of tree" << std::endl;
+    // for (auto it: curr_node->frequency) {
+    //   std::cout << it.first << ":" << it.second << " ";
+    // }
+    // std::cout << std::endl;
     return clss;
   } else if(query[curr_node->feature] <= curr_node->splitted_value){
     return Predict(query, curr_node->left_child);

@@ -29,7 +29,7 @@ void Node::Classify() {
         clss = it.first;
       }
     }
-    std::cout << "class => " << clss << " prob: " << prob_class * 100 << "%" << std::endl;
+    // std::cout << "class => " << clss << " prob: " << prob_class * 100 << "%" << std::endl;
     class_label = std::make_tuple(clss, prob_class);   
   // }
 }
