@@ -1,12 +1,15 @@
 #include <chrono>
 #include <iostream>
+#include <thread>
 #include "decision_tree.h"
+
+// unsigned concurentThreadsSupported = std::thread::hardware_concurrency();
 
 struct RandomForest {
   std::vector<DecisionTree *> trees;
+  DataSet dataset;
   int max_depth_tree;
   int number_of_trees;
-  DataSet dataset;
   RandomForest(DataSet &d_s, int m_d, int n_t)
       : dataset(d_s), max_depth_tree(m_d), number_of_trees(n_t){};
   void BuildForest();
@@ -39,14 +42,31 @@ void RandomForest::BuildForest() {
     // }
     // std::cout << std::endl;
 
-    std::unordered_map<int, std::set<double>> feature_attributes =
-        FeatureAttributes(dataset.num_of_features, dataset.data.size(),
-                          dataset.data, masked_attrs);
+    // std::unordered_map<int, std::set<double>> feature_attributes =
+    //     FeatureAttributes(dataset.num_of_features, dataset.data.size(),
+    //                       dataset.data, masked_attrs);
     dataset.masked_attributes = masked_attrs;
-    DecisionTree *d_t = new DecisionTree(i, max_depth_tree);
     // d_t->id = i;
     // d_t->max_depth = max_depth_tree;
-    d_t->rootNode = d_t->Build(dataset, 0, feature_attributes);
+    std::vector<int> sample_idxs;
+    for (int i = 0; i < static_cast<int>(dataset.data.size()); i++) {
+      sample_idxs.push_back(i);
+    }
+
+    DecisionTree *d_t =
+        new DecisionTree(i, max_depth_tree, dataset, sample_idxs);
+    // d_t->rootNode = d_t->Build(dataset, 0, feature_attributes, sample_idxs);
+    std::chrono::high_resolution_clock::time_point start =
+        std::chrono::high_resolution_clock::now();
+    d_t->rootNode = d_t->Build(dataset, 0, sample_idxs);
+    std::chrono::high_resolution_clock::time_point end =
+        std::chrono::high_resolution_clock::now();
+    auto duration =
+        std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+            .count();
+    std::cout << "Time building tree " << i << " : " << duration / 1000.0
+              << std::endl;
+
     // std::cout << "TREE " << i << std::endl;
     // PrintTree(d_t->rootNode);
     trees.push_back(d_t);
@@ -73,7 +93,7 @@ void RandomForest::Score(int num_of_queries,
 
   double assertions = 0.0;
   // std::cout << "This is my array with predictions" << std::endl;
-  for (int i = 0; i < predictions.size(); i++) {
+  for (int i = 0; i < static_cast<int>(predictions.size()); i++) {
     int aux_max = std::numeric_limits<int>::min();
     int max_class;
     for (auto it : predictions[i]) {
@@ -111,6 +131,7 @@ void RandomForest::Score(int num_of_queries,
 }
 
 int main() {
+  // std::cout << concurentThreadsSupported << std::endl;
   int num_data, len_data, max_depth, num_trees;
   std::cin >> num_trees;
   std::cin >> max_depth;

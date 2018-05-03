@@ -16,9 +16,14 @@ struct DecisionTree {
   int id;
   Node *rootNode;
   int max_depth;
-  DecisionTree(int m_d, int id): 
-  id(id), max_depth(m_d){};
-  Node *Build(const DataSet &d, int curr_depth, std::unordered_map<int, std::set<double>> &feature_attributes);
+  DecisionTree(int m_d, int id, const DataSet &d, const std::vector<int> &sample_idxs): 
+  id(id), max_depth(m_d)
+  { 
+    Build(d, 0, sample_idxs);
+  };
+  // Node *Build(const DataSet &d, int curr_depth, const std::unordered_map<int,std::set<double>> &feature_attributes, const std::vector<int> &sample_idxs);
+  Node *Build(const DataSet &d, int curr_depth, const std::vector<int> &sample_idxs);
+
 };
 
 void PrintTabs(int tabs) {
@@ -70,51 +75,65 @@ void PrintTree(Node *curr_node) {
 /*
   This is in case that the values for the class are different
 */
-// std::set<double> GetFeatureAttributes(
-//     const std::vector<std::vector<double>> &sample, int feature_index) {
-//   std::set<double> feature_attributes;
-//   for (int i = 0; i < sample.size(); i++) {
-//     feature_attributes.insert(sample[i][feature_index]);
-//   }
-//   return feature_attributes;
-// }
+std::set<double> GetFeatureAttributes(
+    const std::vector<std::vector<double>> &sample, int feature_index) {
+  std::set<double> feature_attributes;
+  for (int i = 0; i < static_cast<int>(sample.size()); i++) {
+    feature_attributes.insert(sample[i][feature_index]);
+  }
+  return feature_attributes;
+}
 
-std::tuple<DataSet, DataSet> SplitSample(const DataSet &sample,
+std::tuple<std::vector<int>, std::vector<int>> SplitSample(const DataSet &sample,
                                          const double split_value,
-                                         const int idx_of_attribute) {
-  std::tuple<DataSet, DataSet> splitted_sample;
-  std::vector<std::vector<double>> left_sample;
-  std::vector<std::vector<double>> right_sample;
-  std::vector<int> left_target_values;
-  std::vector<int> right_target_values;
+                                         const int idx_of_attribute,
+                                         const std::vector<int> &sample_idxs) {
+  // std::tuple<DataSet, DataSet> splitted_sample;
+  // std::vector<std::vector<double>> left_sample;
+  // std::vector<std::vector<double>> right_sample;
+  // std::vector<int> left_target_values;
+  // std::vector<int> right_target_values;
 
-  for (int i = 0; i < sample.data.size(); i++) {
-    if (sample.data[i][idx_of_attribute] <= split_value) {
-      left_sample.push_back(sample.data[i]);
-      left_target_values.push_back(sample.target_values[i]);
+  // for (int i = 0; i < sample.data.size(); i++) {
+  //   if (sample.data[i][idx_of_attribute] <= split_value) {
+  //     left_sample.push_back(sample.data[i]);
+  //     left_target_values.push_back(sample.target_values[i]);
+  //   } else {
+  //     right_sample.push_back(sample.data[i]);
+  //     right_target_values.push_back(sample.target_values[i]);
+  //   }
+  // }
+
+  // DataSet left = DataSet(left_sample, left_target_values, sample.target_attributes, sample.num_of_features);
+  // DataSet right = DataSet(right_sample, right_target_values, sample.target_attributes, sample.num_of_features);
+
+  // left.masked_attributes = right.masked_attributes = sample.masked_attributes;
+
+  // for (int i = 0; i < sample.data.size(); i ++) {
+  //   if (sample.data[i][])
+  // }
+
+  std::vector<int> left_idxs;
+  std::vector<int> right_idxs;
+  for (int i = 0; i < static_cast<int>(sample_idxs.size()); i ++) {
+    if (sample.data[sample_idxs[i]][idx_of_attribute] <= split_value) {
+      left_idxs.push_back(sample_idxs[i]);
     } else {
-      right_sample.push_back(sample.data[i]);
-      right_target_values.push_back(sample.target_values[i]);
+      right_idxs.push_back(sample_idxs[i]);
     }
   }
-
-  DataSet left = DataSet(left_sample, left_target_values, sample.target_attributes, sample.num_of_features);
-  DataSet right = DataSet(right_sample, right_target_values, sample.target_attributes, sample.num_of_features);
-
-  left.masked_attributes = right.masked_attributes = sample.masked_attributes;
-
-  splitted_sample = std::make_tuple(left, right);
-  return splitted_sample;
+  return {left_idxs, right_idxs};
 }
 
 std::unordered_map<int, int> GetClassFrequency(const DataSet &sample,
-                                               const std::set<int> &labels) {
+                                               const std::set<int> &labels, 
+                                               const std::vector<int> &sample_idxs) {
   std::unordered_map<int, int> frequency;
   for (auto it : labels) {
     frequency[it];
   }
-  for (int i = 0; i < sample.data.size(); i++) {
-    frequency[sample.target_values[i]] += 1;
+  for (int i = 0; i < static_cast<int>(sample_idxs.size()); i++) {
+    frequency[sample.target_values[sample_idxs[i]]] += 1;
   }
   return frequency;
 }
@@ -130,39 +149,41 @@ double GiniIndex(const std::unordered_map<int, int> frequency,
 }
 
 double GiniSplit(const DataSet &sample, const double feature_attribute,
-                 const int attribute_index) {
+                 const int attribute_index, 
+                 const std::vector<int> &sample_idxs) {
   std::unordered_map<int, int> left_freq;
   std::unordered_map<int, int> right_freq;
   int l, r;
   l = r = 0;
-  for (std::vector<int>::size_type i = 0; i < sample.data.size(); i++) {
-    if (sample.data[i][attribute_index] <= feature_attribute) {
-      left_freq[sample.target_values[i]] += 1;
+  for (int i = 0; i < static_cast<int>(sample_idxs.size()); i++) {
+    if (sample.data[sample_idxs[i]][attribute_index] <= feature_attribute) {
+      left_freq[sample.target_values[sample_idxs[i]]] += 1;
       l++;
     } else {
-      right_freq[sample.target_values[i]] += 1;
+      right_freq[sample.target_values[sample_idxs[i]]] += 1;
       r++;
     }
   }
 
   double left_gini =
-      (((double)l / sample.data.size()) * GiniIndex(left_freq, l));
+      (((double)l / sample_idxs.size()) * GiniIndex(left_freq, l));
   double right_gini =
-      (((double)r / sample.data.size()) * GiniIndex(right_freq, r));
+      (((double)r / sample_idxs.size()) * GiniIndex(right_freq, r));
   return left_gini + right_gini;
 }
 
 std::tuple<int, double, double> BestGini(
-    const DataSet &sample, std::unordered_map<int, std::set<double>> &feature_attributes) {
+    const DataSet &sample, 
+    const std::vector<int> &sample_idxs) {
   double best_gini = std::numeric_limits<double>::max();
   double best_attr_indx = std::numeric_limits<double>::min();
   double attr_value_split = std::numeric_limits<double>::min();
   for (int i = 0; i < sample.num_of_features; i++) {
     if (sample.masked_attributes[i]) {
-      // std::set<double> feature_attributes =
-      //     GetFeatureAttributes(sample.data, i);
-      for (auto attr : feature_attributes[i]) {  // compute the gini index
-        double new_gini = GiniSplit(sample, attr, i);
+      std::set<double> feature_attributes =
+          GetFeatureAttributes(sample.data, i);
+      for (auto attr : feature_attributes) {  // compute the gini index
+        double new_gini = GiniSplit(sample, attr, i, sample_idxs);
         if (new_gini < best_gini) {  // update values
           best_gini = new_gini;
           best_attr_indx = i;
@@ -188,14 +209,14 @@ int ShouldStop(const std::unordered_map<int, int> &frequency) {
 
 
 Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
-                          std::unordered_map<int, std::set<double>> &feature_attributes) {
+                          const std::vector<int> &sample_idxs) {
   std::unordered_map<int, int> frequency =
-      GetClassFrequency(sample, sample.target_attributes);
+      GetClassFrequency(sample, sample.target_attributes, sample_idxs);
 
-  const double sample_gini = GiniIndex(frequency, sample.data.size());
+  const double sample_gini = GiniIndex(frequency, sample_idxs.size());
 
   Node *rootNode =
-      new Node(sample_gini, curr_depth, sample.data.size(), frequency);
+      new Node(sample_gini, curr_depth, sample_idxs.size(), frequency);
 
   if (curr_depth == max_depth || sample_gini == 0 ||
       ShouldStop(frequency) == 0) {
@@ -207,21 +228,32 @@ Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
   int attribute_index;
   double gini_val;
   double attribute_value;
+
+  std::chrono::high_resolution_clock::time_point start =
+      std::chrono::high_resolution_clock::now();
+  // d_t->rootNode = d_t->Build(dataset, 0, sample_idxs);
   std::tie(attribute_index, gini_val, attribute_value) =
-      BestGini(sample, feature_attributes);
+      BestGini(sample, sample_idxs);
+  std::chrono::high_resolution_clock::time_point end =
+      std::chrono::high_resolution_clock::now();
+  auto duration =
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+          .count();
+  std::cout << "Time computing gini " << " : " << duration / 1000.0
+            << std::endl;  
   // split according to best gini
   // split dataset
-  DataSet left_data_set;
-  DataSet right_data_set;
-  std::tie(left_data_set, right_data_set) =
-      SplitSample(sample, attribute_value, attribute_index);
+  std::vector<int> left_idxs;
+  std::vector<int> right_idxs;
+  std::tie(left_idxs, right_idxs) =
+      SplitSample(sample, attribute_value, attribute_index, sample_idxs);
 
   rootNode->feature = attribute_index;
   rootNode->splitted_value = attribute_value;
   rootNode->is_leaf = false;
 
-  rootNode->left_child = Build(left_data_set, curr_depth + 1, feature_attributes);
-  rootNode->right_child = Build(right_data_set, curr_depth + 1, feature_attributes);
+  rootNode->left_child = Build(sample, curr_depth + 1, left_idxs);
+  rootNode->right_child = Build(sample, curr_depth + 1, right_idxs);
   return rootNode;
 }
 
