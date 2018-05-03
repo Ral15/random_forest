@@ -18,30 +18,35 @@ struct RandomForest {
 
 void RandomForest::BuildForest() {
   std::vector<int> attributes_indexes;
-  for (int i = 0; i < dataset.total_features; i++) {
+  for (int i = 0; i < dataset.num_of_features; i++) {
     attributes_indexes.push_back(i);
   }
+
   std::random_device rd;
   std::mt19937 gen(rd());
-  std::uniform_int_distribution<> dis(0, dataset.total_features - 1);
+  std::uniform_int_distribution<> dis(0, dataset.num_of_features - 1);
   for (int i = 0; i < number_of_trees; i++) {
-    std::vector<int> masked_attrs(dataset.total_features, 1);
+    std::vector<int> masked_attrs(dataset.num_of_features, 1);
     std::shuffle(attributes_indexes.begin(), attributes_indexes.end(), gen);
-    for (int j = 0; j < sqrt(dataset.total_features); j++) {
+    for (int j = 0; j < sqrt(dataset.num_of_features); j++) {
       // std::cout << attributes_indexes[j] << " ";
       masked_attrs[attributes_indexes[j]] = 0;
     }
     // std::cout << std::endl;
     // std::cout << "\nFEATURES" << std::endl;
-    // for (int j = 0; j < dataset.total_features; j++) {
+    // for (int j = 0; j < dataset.num_of_features; j++) {
     //   std::cout << masked_attrs[j] << " ";
     // }
     // std::cout << std::endl;
+
+    std::unordered_map<int, std::set<double>> feature_attributes =
+        FeatureAttributes(dataset.num_of_features, dataset.data.size(),
+                          dataset.data, masked_attrs);
     dataset.masked_attributes = masked_attrs;
-    DecisionTree *d_t = new DecisionTree();
-    d_t->id = i;
-    d_t->max_depth = max_depth_tree;
-    d_t->rootNode = d_t->Build(dataset, 0);
+    DecisionTree *d_t = new DecisionTree(i, max_depth_tree);
+    // d_t->id = i;
+    // d_t->max_depth = max_depth_tree;
+    d_t->rootNode = d_t->Build(dataset, 0, feature_attributes);
     // std::cout << "TREE " << i << std::endl;
     // PrintTree(d_t->rootNode);
     trees.push_back(d_t);
@@ -118,10 +123,10 @@ int main() {
   std::set<int> target_attributes;
   std::tie(target_values, target_attributes) = ReadTargetValues(num_data);
 
-  int total_features = data[0].size();
+  int num_of_features = data[0].size();
 
   DataSet dataset =
-      DataSet(data, target_values, target_attributes, total_features);
+      DataSet(data, target_values, target_attributes, num_of_features);
 
   RandomForest forest = RandomForest(dataset, max_depth, num_trees);
 

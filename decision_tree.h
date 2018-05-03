@@ -16,9 +16,9 @@ struct DecisionTree {
   int id;
   Node *rootNode;
   int max_depth;
-  DecisionTree(){};
-  Node *Build(DataSet &d, int curr_depth);
-  // void Predict(const std::vector<double> &q);
+  DecisionTree(int m_d, int id): 
+  id(id), max_depth(m_d){};
+  Node *Build(const DataSet &d, int curr_depth, std::unordered_map<int, std::set<double>> &feature_attributes);
 };
 
 void PrintTabs(int tabs) {
@@ -70,14 +70,14 @@ void PrintTree(Node *curr_node) {
 /*
   This is in case that the values for the class are different
 */
-std::set<double> GetFeatureAttributes(
-    const std::vector<std::vector<double>> &sample, int feature_index) {
-  std::set<double> feature_attributes;
-  for (int i = 0; i < sample.size(); i++) {
-    feature_attributes.insert(sample[i][feature_index]);
-  }
-  return feature_attributes;
-}
+// std::set<double> GetFeatureAttributes(
+//     const std::vector<std::vector<double>> &sample, int feature_index) {
+//   std::set<double> feature_attributes;
+//   for (int i = 0; i < sample.size(); i++) {
+//     feature_attributes.insert(sample[i][feature_index]);
+//   }
+//   return feature_attributes;
+// }
 
 std::tuple<DataSet, DataSet> SplitSample(const DataSet &sample,
                                          const double split_value,
@@ -98,8 +98,8 @@ std::tuple<DataSet, DataSet> SplitSample(const DataSet &sample,
     }
   }
 
-  DataSet left = DataSet(left_sample, left_target_values, sample.target_attributes, sample.total_features);
-  DataSet right = DataSet(right_sample, right_target_values, sample.target_attributes, sample.total_features);
+  DataSet left = DataSet(left_sample, left_target_values, sample.target_attributes, sample.num_of_features);
+  DataSet right = DataSet(right_sample, right_target_values, sample.target_attributes, sample.num_of_features);
 
   left.masked_attributes = right.masked_attributes = sample.masked_attributes;
 
@@ -153,15 +153,15 @@ double GiniSplit(const DataSet &sample, const double feature_attribute,
 }
 
 std::tuple<int, double, double> BestGini(
-    const DataSet &sample) {
+    const DataSet &sample, std::unordered_map<int, std::set<double>> &feature_attributes) {
   double best_gini = std::numeric_limits<double>::max();
   double best_attr_indx = std::numeric_limits<double>::min();
   double attr_value_split = std::numeric_limits<double>::min();
-  for (int i = 0; i < sample.total_features; i++) {
+  for (int i = 0; i < sample.num_of_features; i++) {
     if (sample.masked_attributes[i]) {
-      std::set<double> feature_attributes =
-          GetFeatureAttributes(sample.data, i);
-      for (auto attr : feature_attributes) {  // compute the gini index
+      // std::set<double> feature_attributes =
+      //     GetFeatureAttributes(sample.data, i);
+      for (auto attr : feature_attributes[i]) {  // compute the gini index
         double new_gini = GiniSplit(sample, attr, i);
         if (new_gini < best_gini) {  // update values
           best_gini = new_gini;
@@ -187,7 +187,8 @@ int ShouldStop(const std::unordered_map<int, int> &frequency) {
 
 
 
-Node *DecisionTree::Build(DataSet &sample, int curr_depth) {
+Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
+                          std::unordered_map<int, std::set<double>> &feature_attributes) {
   std::unordered_map<int, int> frequency =
       GetClassFrequency(sample, sample.target_attributes);
 
@@ -207,7 +208,7 @@ Node *DecisionTree::Build(DataSet &sample, int curr_depth) {
   double gini_val;
   double attribute_value;
   std::tie(attribute_index, gini_val, attribute_value) =
-      BestGini(sample);
+      BestGini(sample, feature_attributes);
   // split according to best gini
   // split dataset
   DataSet left_data_set;
@@ -219,8 +220,8 @@ Node *DecisionTree::Build(DataSet &sample, int curr_depth) {
   rootNode->splitted_value = attribute_value;
   rootNode->is_leaf = false;
 
-  rootNode->left_child = Build(left_data_set, curr_depth + 1);
-  rootNode->right_child = Build(right_data_set, curr_depth + 1);
+  rootNode->left_child = Build(left_data_set, curr_depth + 1, feature_attributes);
+  rootNode->right_child = Build(right_data_set, curr_depth + 1, feature_attributes);
   return rootNode;
 }
 
