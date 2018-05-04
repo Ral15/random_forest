@@ -2,20 +2,19 @@
 #include <vector>
 
 struct DataSet {
-  std::vector<std::vector<double>> data;
-  std::vector<int> target_values;
-  std::set<int> target_attributes;
-  std::vector<int> masked_attributes;
-  int num_of_features;
+  std::vector<std::vector<double>> data_;
+  std::vector<int> target_values_;
+  std::set<int> target_attributes_;
+  std::vector<int> masked_attributes_;
+  int num_of_features_;
   DataSet(){};
   DataSet(std::vector<std::vector<double>> &d, std::vector<int> &t_v,
           std::set<int> &t_a, int t_f)
-      : data(d),
-        target_values(t_v),
-        target_attributes(t_a),
-        num_of_features(t_f){};
+      : data_(d),
+        target_values_(t_v),
+        target_attributes_(t_a),
+        num_of_features_(t_f){};
 };
-
 
 std::vector<std::vector<double>> ReadSample(int num_data, int len_data) {
   std::vector<std::vector<double>> data;
@@ -45,19 +44,19 @@ std::tuple<std::vector<int>, std::set<int>> ReadTargetValues(int num_data) {
   return std::make_tuple(target_values, target_attributes);
 }
 
-
-std::unordered_map<int,std::set<double>> FeatureAttributes(int num_of_features, int sample_size, 
-                                                 const std::vector<std::vector<double>> &sample,
-                                                 const std::vector<int> &feature_idxs) {
+std::unordered_map<int, std::set<double>> FeatureAttributes(
+    int num_of_features, int sample_size,
+    const std::vector<std::vector<double>> &sample,
+    const std::vector<int> &feature_idxs) {
   std::unordered_map<int, std::set<double>> feature_attributes;
-  for (int i = 0;  i < num_of_features; i ++) {
+  for (int i = 0; i < num_of_features; i++) {
     if (feature_idxs[i] == 1) {
       std::set<double> attributes;
-      for (int j = 0; j < sample_size; j ++) {
+      for (int j = 0; j < sample_size; j++) {
         attributes.insert(sample[j][i]);
       }
       feature_attributes[i] = attributes;
-    } 
+    }
   }
   return feature_attributes;
 }

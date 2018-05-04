@@ -3,32 +3,32 @@
 #include <thread>
 #include "decision_tree.h"
 
-int number_of_threads = std::thread::hardware_concurrency();
+int NUMBER_OF_THREADS = std::thread::hardware_concurrency();
 
 struct RandomForest {
-  DataSet dataset;
-  int max_depth_tree;
-  int number_of_trees;
-  std::vector<DecisionTree *> trees;
+  DataSet dataset_;
+  int max_depth_tree_;
+  int number_of_trees_;
+  std::vector<DecisionTree *> trees_;
   RandomForest(DataSet &d_s, int m_d, int n_t)
-      : dataset(d_s),
-        max_depth_tree(m_d),
-        number_of_trees(n_t),
-        trees(n_t, nullptr) {
+      : dataset_(d_s),
+        max_depth_tree_(m_d),
+        number_of_trees_(n_t),
+        trees_(n_t, nullptr) {
     // BuildForest(0, number_of_trees);
     std::vector<std::thread> threads;
-    if (number_of_trees <= number_of_threads) {
-      for (int i = 0; i < number_of_trees; i++) {
+    if (number_of_trees_ <= NUMBER_OF_THREADS) {
+      for (int i = 0; i < number_of_trees_; i++) {
         // std::cout << "less than" << std::endl;
         threads.push_back(std::thread(&RandomForest::BuildForest, this, i));
       }
     } else {
       int batch_size =
-          (number_of_trees + number_of_threads - 1) / number_of_threads;
+          (number_of_trees_ + NUMBER_OF_THREADS - 1) / NUMBER_OF_THREADS;
       // std::cout << batch_size << std::endl;
-      for (int i = 0; i < number_of_threads; i++) {
+      for (int i = 0; i < NUMBER_OF_THREADS; i++) {
         int start = i * batch_size;
-        int end = std::min(start + batch_size, number_of_trees);
+        int end = std::min(start + batch_size, number_of_trees_);
         // std::cout << start << " " << end << std::endl;
         threads.push_back(
             std::thread(&RandomForest::BuildBatchForest, this, start, end));
@@ -59,20 +59,20 @@ std::vector<int> SelectFeaturesRand(int number_features) {
   std::uniform_int_distribution<> dis(0, number_features - 1);
   std::vector<int> masked_attrs(number_features, 1);
   std::shuffle(attributes_indexes.begin(), attributes_indexes.end(), gen);
-  for (int j = 0; j < sqrt(number_features); j++) {
-    masked_attrs[attributes_indexes[j]] = 0;
+  for (int i = 0; i < sqrt(number_features); i++) {
+    masked_attrs[attributes_indexes[i]] = 0;
   }
   return masked_attrs;
 }
 
 void RandomForest::BuildForest(int id) {
   std::vector<int> attributes_indexes =
-      CreateAttributeIdxs(dataset.num_of_features);
+      CreateAttributeIdxs(dataset_.num_of_features_);
   // for (int i = 0; i < end; i++) {
-  dataset.masked_attributes = SelectFeaturesRand(dataset.num_of_features);
+  dataset_.masked_attributes_ = SelectFeaturesRand(dataset_.num_of_features_);
 
   std::vector<int> sample_idxs;
-  for (int i = 0; i < static_cast<int>(dataset.data.size()); i++) {
+  for (int i = 0; i < static_cast<int>(dataset_.data_.size()); i++) {
     sample_idxs.push_back(i);
   }
 
@@ -80,7 +80,7 @@ void RandomForest::BuildForest(int id) {
   //     std::chrono::high_resolution_clock::now();
 
   DecisionTree *d_t =
-      new DecisionTree(id, max_depth_tree, dataset, sample_idxs);
+      new DecisionTree(id, max_depth_tree_, dataset_, sample_idxs);
 
   // std::chrono::high_resolution_clock::time_point end =
   //     std::chrono::high_resolution_clock::now();
@@ -89,27 +89,26 @@ void RandomForest::BuildForest(int id) {
   //         .count();
   // std::cout << "Time building tree " << id << " : " << duration / 1000.0
   //           << std::endl;
-  trees[id] = d_t;
-  // }
+  trees_[id] = d_t;
 }
 
 void RandomForest::BuildBatchForest(int start, int end) {
   // std::cout << start << " " << end << std::endl;
   std::vector<int> attributes_indexes =
-      CreateAttributeIdxs(dataset.num_of_features);
+      CreateAttributeIdxs(dataset_.num_of_features_);
   for (int i = start; i < end; i++) {
-    dataset.masked_attributes = SelectFeaturesRand(dataset.num_of_features);
+    dataset_.masked_attributes_ = SelectFeaturesRand(dataset_.num_of_features_);
 
     std::vector<int> sample_idxs;
-    for (int i = 0; i < static_cast<int>(dataset.data.size()); i++) {
-      sample_idxs.push_back(i);
+    for (int j = 0; j < static_cast<int>(dataset_.data_.size()); j++) {
+      sample_idxs.push_back(j);
     }
 
     // std::chrono::high_resolution_clock::time_point start =
     //     std::chrono::high_resolution_clock::now();
 
     DecisionTree *d_t =
-        new DecisionTree(i, max_depth_tree, dataset, sample_idxs);
+        new DecisionTree(i, max_depth_tree_, dataset_, sample_idxs);
 
     // std::chrono::high_resolution_clock::time_point end =
     //     std::chrono::high_resolution_clock::now();
@@ -118,7 +117,7 @@ void RandomForest::BuildBatchForest(int start, int end) {
     //         .count();
     // std::cout << "Time building tree " << i << " : " << duration / 1000.0
     //           << std::endl;
-    trees[i] = d_t;
+    trees_[i] = d_t;
   }
 }
 
@@ -128,17 +127,17 @@ void RandomForest::Score(int num_of_queries,
   std::vector<std::unordered_map<int, int>> predictions;
   for (int i = 0; i < num_of_queries; i++) {
     std::unordered_map<int, int> p;
-    for (auto it : trees) {
-      int predicted_class = Predict(queries_sample[i], it->rootNode);
+    for (auto &it : trees_) {
+      int predicted_class = Predict(queries_sample[i], it->rootNode_);
       p[predicted_class] += 1;
     }
-    predictions.push_back(p);
+    predictions.push_back(std::move(p));
   }
   double assertions = 0.0;
   for (int i = 0; i < static_cast<int>(predictions.size()); i++) {
     int aux_max = std::numeric_limits<int>::min();
     int max_class;
-    for (auto it : predictions[i]) {
+    for (auto &it : predictions[i]) {
       if (aux_max < it.second) {
         aux_max = it.second;
         max_class = it.first;
