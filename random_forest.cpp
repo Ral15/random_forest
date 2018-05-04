@@ -36,6 +36,8 @@ struct RandomForest {
     }
     for (auto &th : threads) th.join();
   };
+
+  ~RandomForest() { trees_.clear(); };
   void BuildBatchForest(int start, int end);
   void BuildForest(int id);
 
@@ -191,6 +193,7 @@ int main() {
   // std::chrono::high_resolution_clock::time_point start =
   //     std::chrono::high_resolution_clock::now();
   forest.Score(num_of_queries, queries_sample, queries_target);
+
   // std::chrono::high_resolution_clock::time_point end =
   //     std::chrono::high_resolution_clock::now();
   // auto duration =

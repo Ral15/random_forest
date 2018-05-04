@@ -1,6 +1,7 @@
 #include <set>
 #include <vector>
 
+
 struct DataSet {
   std::vector<std::vector<double>> data_;
   std::vector<int> target_values_;
@@ -14,6 +15,7 @@ struct DataSet {
         target_values_(t_v),
         target_attributes_(t_a),
         num_of_features_(t_f){};
+  ~DataSet(){};
 };
 
 std::vector<std::vector<double>> ReadSample(int num_data, int len_data) {

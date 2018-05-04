@@ -16,6 +16,7 @@ struct DecisionTree {
   Node *Build(const DataSet &d, int curr_depth, const std::vector<int> &sample_idxs);
   DecisionTree(int m_d, int id, const DataSet &d, const std::vector<int> &sample_idxs): 
   id_(id), max_depth_(m_d), rootNode_(Build(d, 0, sample_idxs)) {};
+  ~DecisionTree(){};
 };
 
 void PrintTabs(int tabs) {
