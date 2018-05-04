@@ -8,8 +8,8 @@ struct DataSet {
   std::vector<int> masked_attributes;
   int num_of_features;
   DataSet(){};
-  DataSet(std::vector<std::vector<double>> d, std::vector<int> t_v,
-          std::set<int> t_a, int t_f)
+  DataSet(std::vector<std::vector<double>> &d, std::vector<int> &t_v,
+          std::set<int> &t_a, int t_f)
       : data(d),
         target_values(t_v),
         target_attributes(t_a),

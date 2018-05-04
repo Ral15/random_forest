@@ -14,15 +14,12 @@ using std::string;
 
 struct DecisionTree {
   int id;
-  Node *rootNode;
   int max_depth;
-  DecisionTree(int m_d, int id, const DataSet &d, const std::vector<int> &sample_idxs): 
-  id(id), max_depth(m_d)
-  { 
-    Build(d, 0, sample_idxs);
-  };
-  // Node *Build(const DataSet &d, int curr_depth, const std::unordered_map<int,std::set<double>> &feature_attributes, const std::vector<int> &sample_idxs);
+  Node *rootNode;
   Node *Build(const DataSet &d, int curr_depth, const std::vector<int> &sample_idxs);
+  DecisionTree(int m_d, int id, const DataSet &d, const std::vector<int> &sample_idxs): 
+  id(id), max_depth(m_d), rootNode(Build(d, 0, sample_idxs)) {};
+  // Node *Build(const DataSet &d, int curr_depth, const std::unordered_map<int,std::set<double>> &feature_attributes, const std::vector<int> &sample_idxs);
 
 };
 
@@ -88,31 +85,6 @@ std::tuple<std::vector<int>, std::vector<int>> SplitSample(const DataSet &sample
                                          const double split_value,
                                          const int idx_of_attribute,
                                          const std::vector<int> &sample_idxs) {
-  // std::tuple<DataSet, DataSet> splitted_sample;
-  // std::vector<std::vector<double>> left_sample;
-  // std::vector<std::vector<double>> right_sample;
-  // std::vector<int> left_target_values;
-  // std::vector<int> right_target_values;
-
-  // for (int i = 0; i < sample.data.size(); i++) {
-  //   if (sample.data[i][idx_of_attribute] <= split_value) {
-  //     left_sample.push_back(sample.data[i]);
-  //     left_target_values.push_back(sample.target_values[i]);
-  //   } else {
-  //     right_sample.push_back(sample.data[i]);
-  //     right_target_values.push_back(sample.target_values[i]);
-  //   }
-  // }
-
-  // DataSet left = DataSet(left_sample, left_target_values, sample.target_attributes, sample.num_of_features);
-  // DataSet right = DataSet(right_sample, right_target_values, sample.target_attributes, sample.num_of_features);
-
-  // left.masked_attributes = right.masked_attributes = sample.masked_attributes;
-
-  // for (int i = 0; i < sample.data.size(); i ++) {
-  //   if (sample.data[i][])
-  // }
-
   std::vector<int> left_idxs;
   std::vector<int> right_idxs;
   for (int i = 0; i < static_cast<int>(sample_idxs.size()); i ++) {
@@ -138,7 +110,7 @@ std::unordered_map<int, int> GetClassFrequency(const DataSet &sample,
   return frequency;
 }
 
-double GiniIndex(const std::unordered_map<int, int> frequency,
+double GiniIndex(const std::unordered_map<int, int> &frequency,
                  const int sample_size) {
   double gini_index = 0.0;
   for (auto it : frequency) {
@@ -220,7 +192,6 @@ Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
 
   if (curr_depth == max_depth || sample_gini == 0 ||
       ShouldStop(frequency) == 0) {
-    rootNode->is_leaf = true;
     rootNode->Classify();
     return rootNode;
   }
@@ -229,18 +200,19 @@ Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
   double gini_val;
   double attribute_value;
 
-  std::chrono::high_resolution_clock::time_point start =
-      std::chrono::high_resolution_clock::now();
-  // d_t->rootNode = d_t->Build(dataset, 0, sample_idxs);
+  // std::chrono::high_resolution_clock::time_point start =
+  //     std::chrono::high_resolution_clock::now();
+
   std::tie(attribute_index, gini_val, attribute_value) =
       BestGini(sample, sample_idxs);
-  std::chrono::high_resolution_clock::time_point end =
-      std::chrono::high_resolution_clock::now();
-  auto duration =
-      std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
-          .count();
-  std::cout << "Time computing gini " << " : " << duration / 1000.0
-            << std::endl;  
+
+  // std::chrono::high_resolution_clock::time_point end =
+  //     std::chrono::high_resolution_clock::now();
+  // auto duration =
+  //     std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+  //         .count();
+  // std::cout << "Time computing gini " << " : " << duration / 1000.0
+  //           << std::endl;  
   // split according to best gini
   // split dataset
   std::vector<int> left_idxs;
@@ -278,7 +250,3 @@ int Predict(const std::vector<double> &query, Node *curr_node) {
     return Predict(query, curr_node->right_child);
   }
 }
-
-
-
-

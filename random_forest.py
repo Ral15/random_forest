@@ -2,6 +2,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import tree
 from sklearn.datasets import make_classification
 import graphviz 
+import time
 
 num_trees = int(input())
 max_depth = int(input())
@@ -28,20 +29,14 @@ def get_y():
 X = get_x(num_data)
 y = get_y()
 
-clf = RandomForestClassifier(max_depth=max_depth, random_state=None, n_jobs=-1)
+clf = RandomForestClassifier(max_depth=max_depth, random_state=None, n_jobs=-1, n_estimators=num_trees)
 clf = clf.fit(X, y)
 
 num_q = int(input())
 
 X_q = get_x(num_q)
 y_q = get_y()
-
+start = time.time()
 print(clf.score(X_q, y_q))
-
-# print(clf.predict_proba([[842, 0,  2.2, 0,    1, 0, 7,  0.6, 188, 2,
-#                            2,   20, 756, 2549, 9, 7, 19, 0,   0,   1]]))
-# print(clf)
-# print(clf.feature_importances_)
-# dot_data = tree.export_graphviz(clf, out_file=None)
-# graph = graphviz.Source(dot_data)
-# graph.render("test")
+end = time.time()
+print(end - start)

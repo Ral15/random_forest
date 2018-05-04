@@ -1,0 +1,352 @@
+***1 Tree****
+max_depth = 10
+Time building tree 0 : 0
+Time building forest : 0
+Score => 0.243333
+****5 Trees****
+max_depth = 10
+Time building tree 0 : 0
+Time building tree 1 : 0.426
+Time building tree 2 : 0.889
+Time building tree 4 : 2.412
+Time building tree 3 : 2.138
+Time building forest : 3.029
+Score => 0.393333
+Time building tree 0 : 0
+Time building tree 1 : 0.641
+Time building tree 2 : 1.204
+Time building tree 4 : 2.087
+Time building tree 3 : 1.261
+Time building forest : 2.467
+Score => 0.738333
+Time building tree 0 : 0
+Time building tree 1 : 0.739
+Time building tree 2 : 1.331
+Time building tree 4 : 2.406
+Time building tree 3 : 1.615
+Time building forest : 2.948
+Score => 0.776667
+Time building tree 0 : 0
+Time building tree 1 : 0.312
+Time building tree 2 : 0.538
+Time building tree 4 : 1.59
+Time building tree 3 : 1.644
+Time building forest : 2.184
+Score => 0.806667
+Time building tree 0 : 0
+Time building tree 1 : 0.871
+Time building tree 2 : 1.422
+Time building tree 4 : 2.158
+Time building tree 3 : 1.153
+Time building forest : 2.577
+Score => 0.798333
+Time building tree 0 : 0
+Time building tree 1 : 0.674
+Time building tree 2 : 1.464
+Time building tree 4 : 2.906
+Time building tree 3 : 2.17
+Time building forest : 3.635
+Score => 0.776667
+Time building tree 0 : 0
+Time building tree 1 : 0.68
+Time building tree 2 : 1.264
+Time building tree 4 : 2.06
+Time building tree 3 : 1.182
+Time building forest : 2.447
+Score => 0.77
+Time building tree 0 : 0
+Time building tree 1 : 0.252
+Time building tree 2 : 0.619
+Time building tree 4 : 1.428
+Time building tree 3 : 1.118
+Time building forest : 1.739
+Score => 0.298333
+Time building tree 0 : 0
+Time building tree 1 : 0.435
+Time building tree 2 : 0.779
+Time building tree 4 : 1.311
+Time building tree 3 : 0.649
+Time building forest : 1.429
+Score => 0.295
+Time building tree 0 : 0
+Time building tree 1 : 0.624
+Time building tree 2 : 1.129
+Time building tree 4 : 2.597
+Time building tree 3 : 2.066
+Time building forest : 3.197
+Score => 0.355
+Avg Score after 10 times => 0.6008333
+***Trees 10******
+max_depth=10
+Time building tree 0 : 0
+Time building tree 1 : 0.771
+Time building tree 2 : 1.664
+Time building tree 3 : 2.461
+Time building tree 6 : 4.217
+Time building tree 4 : 2.29
+Time building tree 9 : 6.258
+Time building tree 5 : 2.702
+Time building tree 7 : 3.946
+Time building tree 8 : 4.636
+Time building forest : 12.802
+Score => 0.78
+Time building tree 0 : 0
+Time building tree 1 : 0.654
+Time building tree 2 : 1.605
+Time building tree 3 : 2.299
+Time building tree 6 : 4.596
+Time building tree 4 : 2.943
+Time building tree 9 : 6.158
+Time building tree 5 : 3.242
+Time building tree 7 : 4.728
+Time building tree 8 : 3.396
+Time building forest : 12.731
+Score => 0.833333
+Time building tree 0 : 0
+Time building tree 1 : 0.536
+Time building tree 2 : 1.474
+Time building tree 3 : 2.335
+Time building tree 6 : 3.966
+Time building tree 4 : 2.107
+Time building tree 9 : 6.114
+Time building tree 5 : 3.224
+Time building tree 7 : 4.617
+Time building tree 8 : 2.036
+Time building forest : 10.631
+Score => 0.733333
+Time building tree 0 : 0
+Time building tree 1 : 0.306
+Time building tree 2 : 1.757
+Time building tree 3 : 2.521
+Time building tree 6 : 4.442
+Time building tree 4 : 3.043
+Time building tree 9 : 6.434
+Time building tree 5 : 2.357
+Time building tree 7 : 4.024
+Time building tree 8 : 4.968
+Time building forest : 13.436
+Score => 0.81
+Time building tree 0 : 0
+Time building tree 1 : 0.822
+Time building tree 2 : 1.549
+Time building tree 3 : 2.565
+Time building tree 6 : 5.273
+Time building tree 4 : 3.39
+Time building tree 9 : 7.251
+Time building tree 5 : 4.093
+Time building tree 7 : 5.547
+Time building tree 8 : 5.276
+Time building forest : 16.098
+Score => 0.841667
+Avg score => 0.7996666
+**** Trees 50 ****
+max_depth=10
+Time building tree 0 : 0
+Time building tree 1 : 1.043
+Time building tree 2 : 2.113
+Time building tree 3 : 3.232
+Time building tree 39 : 8.558
+Time building tree 26 : 8.767
+Time building tree 13 : 8.781
+Time building tree 4 : 2.6
+Time building tree 5 : 5.356
+Time building tree 14 : 9.718
+Time building tree 27 : 9.831
+Time building tree 40 : 10.373
+Time building tree 6 : 6.824
+Time building tree 15 : 8.325
+Time building tree 28 : 8.799
+Time building tree 41 : 8.607
+Time building tree 7 : 6.936
+Time building tree 16 : 9.697
+Time building tree 42 : 9.562
+Time building tree 8 : 9.132
+Time building tree 29 : 10.004
+Time building tree 17 : 7.459
+Time building tree 43 : 7.059
+Time building tree 9 : 7.467
+Time building tree 30 : 7.456
+Time building tree 18 : 11.171
+Time building tree 10 : 10.637
+Time building tree 44 : 12.932
+Time building tree 31 : 12.371
+Time building tree 11 : 7.08
+Time building tree 19 : 7.699
+Time building tree 45 : 7.79
+Time building tree 32 : 7.723
+Time building tree 12 : 7.498
+Time building tree 20 : 8.157
+Time building tree 33 : 7.194
+Time building tree 46 : 7.31
+Time building tree 21 : 8.375
+Time building tree 34 : 8.239
+Time building tree 47 : 8.486
+Time building tree 22 : 10.659
+Time building tree 48 : 9.792
+Time building tree 35 : 10.12
+Time building tree 23 : 6.63
+Time building tree 36 : 6.699
+Time building tree 49 : 6.786
+Time building tree 24 : 5.747
+Time building tree 37 : 5.424
+Time building tree 25 : 6.021
+Time building tree 38 : 6.006
+Time building forest : 108.642
+Score => 0.833333
+max_depth=2
+Time building tree 0 : 0.001
+Time building tree 1 : 0.801
+Time building tree 2 : 2.203
+Time building tree 3 : 2.537
+Time building tree 4 : 3.361
+Time building tree 26 : 9.349
+Time building tree 39 : 9.385
+Time building tree 13 : 9.52
+Time building tree 5 : 3.952
+Time building tree 6 : 4.795
+Time building tree 27 : 8.641
+Time building tree 40 : 8.607
+Time building tree 14 : 8.644
+Time building tree 7 : 7.391
+Time building tree 28 : 8.763
+Time building tree 41 : 8.813
+Time building tree 15 : 8.864
+Time building tree 8 : 7.656
+Time building tree 29 : 8.492
+Time building tree 42 : 8.481
+Time building tree 16 : 8.388
+Time building tree 9 : 8.275
+Time building tree 30 : 7.218
+Time building tree 43 : 7.246
+Time building tree 17 : 7.207
+Time building tree 10 : 7.585
+Time building tree 31 : 8.612
+Time building tree 44 : 8.846
+Time building tree 18 : 8.856
+Time building tree 11 : 9.458
+Time building tree 32 : 8.704
+Time building tree 45 : 8.726
+Time building tree 19 : 8.959
+Time building tree 12 : 6.996
+Time building tree 33 : 6.933
+Time building tree 46 : 7.048
+Time building tree 20 : 6.896
+Time building tree 34 : 7.975
+Time building tree 47 : 8.04
+Time building tree 21 : 7.916
+Time building tree 35 : 6.63
+Time building tree 48 : 6.932
+Time building tree 22 : 6.949
+Time building tree 36 : 6.551
+Time building tree 23 : 6.906
+Time building tree 49 : 7.008
+Time building tree 37 : 6.478
+Time building tree 24 : 6.328
+Time building tree 38 : 6.11
+Time building tree 25 : 6.322
+Time building forest : 101.764
+Score => 0.823333
+***** Tree 100 ***
+max_depth=2
+Time building tree 0 : 0
+Time building tree 1 : 0.824
+Time building tree 2 : 0.63
+Time building tree 3 : 2.971
+Time building tree 75 : 8.356
+Time building tree 25 : 8.366
+Time building tree 50 : 8.431
+Time building tree 4 : 4.197
+Time building tree 5 : 4.39
+Time building tree 76 : 11.257
+Time building tree 6 : 6.634
+Time building tree 26 : 11.286
+Time building tree 51 : 11.254
+Time building tree 7 : 7.263
+Time building tree 77 : 8.809
+Time building tree 52 : 8.793
+Time building tree 27 : 8.856
+Time building tree 8 : 7.732
+Time building tree 53 : 8.15
+Time building tree 78 : 8.242
+Time building tree 28 : 8.21
+Time building tree 9 : 7.472
+Time building tree 54 : 8.238
+Time building tree 79 : 8.444
+Time building tree 29 : 8.469
+Time building tree 10 : 8.484
+Time building tree 55 : 7.838
+Time building tree 80 : 7.845
+Time building tree 30 : 8.052
+Time building tree 11 : 6.352
+Time building tree 56 : 6.324
+Time building tree 31 : 6.048
+Time building tree 81 : 6.864
+Time building tree 12 : 8.15
+Time building tree 32 : 6.959
+Time building tree 57 : 7.48
+Time building tree 82 : 7.164
+Time building tree 13 : 7.021
+Time building tree 58 : 8.15
+Time building tree 33 : 8.65
+Time building tree 83 : 8.128
+Time building tree 14 : 8.418
+Time building tree 34 : 7.138
+Time building tree 59 : 7.399
+Time building tree 84 : 7.052
+Time building tree 15 : 9.233
+Time building tree 60 : 13.355
+Time building tree 35 : 13.399
+Time building tree 85 : 13.288
+Time building tree 16 : 8.359
+Time building tree 61 : 6.991
+Time building tree 36 : 7.014
+Time building tree 86 : 7.104
+Time building tree 17 : 8.608
+Time building tree 62 : 7.14
+Time building tree 87 : 6.988
+Time building tree 37 : 7.106
+Time building tree 18 : 4.979
+Time building tree 88 : 6.814
+Time building tree 63 : 7.127
+Time building tree 38 : 7.144
+Time building tree 19 : 7.426
+Time building tree 39 : 5.429
+Time building tree 64 : 5.505
+Time building tree 89 : 5.924
+Time building tree 20 : 7.342
+Time building tree 40 : 7.579
+Time building tree 65 : 7.797
+Time building tree 90 : 7.857
+Time building tree 21 : 8.445
+Time building tree 41 : 9.569
+Time building tree 66 : 9.41
+Time building tree 91 : 9.398
+Time building tree 22 : 11.579
+Time building tree 67 : 9.063
+Time building tree 42 : 9.184
+Time building tree 92 : 9.222
+Time building tree 23 : 7.703
+Time building tree 43 : 8.872
+Time building tree 68 : 9.01
+Time building tree 93 : 10.182
+Time building tree 24 : 8.439
+Time building tree 69 : 5.889
+Time building tree 44 : 6.042
+Time building tree 94 : 5.798
+Time building tree 70 : 7.941
+Time building tree 45 : 8.054
+Time building tree 95 : 11.6
+Time building tree 71 : 8.021
+Time building tree 46 : 8.121
+Time building tree 96 : 6.288
+Time building tree 72 : 5.56
+Time building tree 47 : 5.619
+Time building tree 97 : 6.1
+Time building tree 73 : 7.373
+Time building tree 48 : 7.249
+Time building tree 98 : 7.603
+Time building tree 74 : 7.823
+Time building tree 49 : 7.683
+Time building tree 99 : 5.16
+Time building forest : 201.505
+Score => 0.838333
