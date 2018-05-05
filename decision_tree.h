@@ -16,12 +16,15 @@ struct DecisionTree {
   Node *Build(const DataSet &d, int curr_depth, const std::vector<int> &sample_idxs);
   DecisionTree(int m_d, int id, const DataSet &d, const std::vector<int> &sample_idxs): 
   id_(id), max_depth_(m_d), rootNode_(Build(d, 0, sample_idxs)) {};
-  ~DecisionTree(){};
+  ~DecisionTree(){
+    delete rootNode_;
+  };
+  int PredictTree(const std::vector<double> &query, Node *curr_node);     
 };
 
-void PrintTabs(int tabs) {
-  for (int i = 0; i < tabs; i++) std::cout << "|";
-}
+// void PrintTabs(int tabs) {
+//   for (int i = 0; i < tabs; i++) std::cout << "|";
+// }
 
 // void PrintTree(Node *curr_node) {
 //   if (curr_node == nullptr) {
@@ -227,15 +230,16 @@ Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
 
 
 
-int Predict(const std::vector<double> &query, Node *curr_node) { 
+int DecisionTree::PredictTree(const std::vector<double> &query, Node *curr_node) { 
+  // std::cout << "??????" << std::endl;
   if (curr_node->is_leaf_) {
     int clss;
     double prob;
     std::tie(clss, prob) = curr_node->class_label_;
     return clss;
   } else if(query[curr_node->feature_] <= curr_node->splitted_value_){
-    return Predict(query, curr_node->left_child_);
+    return PredictTree(query, curr_node->left_child_);
   } else {
-    return Predict(query, curr_node->right_child_);
+    return PredictTree(query, curr_node->right_child_);
   }
 }

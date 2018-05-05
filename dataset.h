@@ -1,7 +1,6 @@
 #include <set>
 #include <vector>
 
-
 struct DataSet {
   std::vector<std::vector<double>> data_;
   std::vector<int> target_values_;

@@ -15,6 +15,10 @@ struct Node {
   Node(double g_i, int c_d, int s_s, std::unordered_map<int, int> &f)
       : gini_index_(g_i), curr_depth_(c_d), sample_size_(s_s), frequency_(f){};
   void Classify();
+  ~Node() {
+    delete left_child_;
+    delete right_child_;
+  }
 };
 
 void Node::Classify() {
