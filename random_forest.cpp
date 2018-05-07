@@ -38,8 +38,9 @@ struct RandomForest {
   void BuildBatchForest(int start, int end);
   void BuildForest(int id);
 
-  int Predict(const int num_of_queries,
-              const std::vector<std::vector<double>> &queries_sample);
+  std::vector<int> Predict(
+      const int num_of_queries,
+      const std::vector<std::vector<double>> &queries_sample);
 
   void PredictByBatch(const int start, const int end,
                       const std::vector<double> &query, const int q_p);
@@ -81,28 +82,16 @@ void RandomForest::BuildForest(int id) {
     sample_idxs.push_back(i);
   }
 
-  // std::chrono::high_resolution_clock::time_point start =
-  //     std::chrono::high_resolution_clock::now();
-
   DecisionTree *d_t =
       new DecisionTree(id, max_depth_tree_, dataset_, sample_idxs);
 
-  // std::chrono::high_resolution_clock::time_point end =
-  //     std::chrono::high_resolution_clock::now();
-  // auto duration =
-  //     std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
-  //         .count();
-  // std::cout << "Time building tree " << id << " : " << duration / 1000.0
-  //           << std::endl;
   trees_[id] = d_t;
 }
 
 void RandomForest::BuildBatchForest(int start, int end) {
-  // std::cout << start << " " << end << std::endl;
   std::vector<int> attributes_indexes =
       CreateAttributeIdxs(dataset_.num_of_features_);
   for (int i = start; i < end; i++) {
-    // std::cout << i << std::endl;
     dataset_.masked_attributes_ = SelectFeaturesRand(dataset_.num_of_features_);
 
     std::vector<int> sample_idxs;
@@ -110,44 +99,28 @@ void RandomForest::BuildBatchForest(int start, int end) {
       sample_idxs.push_back(j);
     }
 
-    // std::chrono::high_resolution_clock::time_point start =
-    //     std::chrono::high_resolution_clock::now();
-
     DecisionTree *d_t =
         new DecisionTree(i, max_depth_tree_, dataset_, sample_idxs);
 
-    // std::chrono::high_resolution_clock::time_point end =
-    //     std::chrono::high_resolution_clock::now();
-    // auto duration =
-    //     std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
-    //         .count();
-    // std::cout << "Time building tree " << i << " : " << duration / 1000.0
-    //           << std::endl;
     trees_[i] = d_t;
   }
-  // std::cout << std::endl;
 }
 
 int GetBatchSize(const int tasks) {
   return (tasks + NUMBER_OF_THREADS - 1) / NUMBER_OF_THREADS;
 }
 
-int RandomForest::Predict(
+std::vector<int> RandomForest::Predict(
     const int num_of_queries,
     const std::vector<std::vector<double>> &queries_sample) {
   for (int q_p = 0; q_p < num_of_queries; q_p++) {
-    // for (int i = 0; i < num_of_queries; i++) {
     // don't parallelize
     if (number_of_trees_ == 1) {
-      // std::unordered_map<int, int> p;
       for (auto &it : trees_) {
         int predicted_class =
             it->PredictTree(queries_sample[q_p], it->rootNode_);
         predictions_[q_p][0][predicted_class] += 1;
-        // DecisionTree::PredictTree(queries_sample[0], it->rootNode_);
-        // p[predicted_class] += 1;
       }
-      // predictions_[q_p] = std::move(p);
     } else {
       // predict in parallel
       std::vector<std::thread> threads;
@@ -157,33 +130,24 @@ int RandomForest::Predict(
         int end = std::min(start + batch_size, number_of_trees_);
         threads.push_back(std::thread(&RandomForest::PredictByBatch, this,
                                       start, end, queries_sample[q_p], q_p));
-        // std::cout << "?ended" << std::endl;
       }
       for (auto &th : threads) th.join();
     }
   }
-
-  // }
-  int best_class;
-  int total_p = -1;
-  for (auto &tree : predictions_) {
-    for (auto &query_point : tree) {
-      for (auto &prediction : query_point) {
+  std::vector<int> class_votes;
+  for (auto &q_p : predictions_) {
+    int best_class;
+    int total_p = -1;
+    for (auto &tree : q_p) {
+      for (auto &prediction : tree) {
         if (total_p < prediction.second) {  // what if there is a tie?
           best_class = prediction.first;
-          // total_p = p.second;
         }
       }
     }
-    // for (auto &p : predicted) {
-    //   if (total_p < p.second) {  // what if there is a tie?
-    //     best_class = p.first;
-    //     // total_p = p.second;
-    //   }
-    // }
+    class_votes.push_back(best_class);
   }
-  // return {best_class, total_p};
-  return best_class;
+  return class_votes;
 }
 
 void RandomForest::PredictByBatch(const int start, const int end,
@@ -197,6 +161,7 @@ void RandomForest::PredictByBatch(const int start, const int end,
   for (int i = start; i < end; i++) {
     int predicted_class =
         DecisionTree::PredictTree(query, trees_[i]->rootNode_);
+    // std::cout << i << " " << predicted_class << std::endl;
     // p[predicted_class] += 1;
     predictions_[q_p][i][predicted_class] += 1;
   }
@@ -230,28 +195,36 @@ double RandomForest::Score(
   //   predictions.push_back(std::move(p));
   // }
   // std::ignore = this->Predict(num_of_queries, queries_sample);
-  std::ignore = this->Predict(num_of_queries, queries_sample);
+  auto predictions = this->Predict(num_of_queries, queries_sample);
 
   double assertions = 0.0;
-  for (int i = 0; i < num_of_queries; i++) {
-    int max_freq = std::numeric_limits<int>::min();
-    int max_class;
-    for (auto &tree : predictions_[i]) {
-      for (auto &prediction : tree) {
-        if (max_freq < prediction.second) {
-          max_class = prediction.first;
-          max_freq = prediction.second;
-        }
-      }
-    }
-    std::cout << max_class << " " << queries_target[i] << " id: " << i
-              << std::endl;
-    if (max_class == queries_target[i]) {
+  for (int i = 0; i < static_cast<int>(predictions.size()); i++) {
+    if (predictions[i] == queries_target[i]) {
       assertions += 1.0;
     }
   }
 
-  std::cout << assertions / num_of_queries << std::endl;
+  // for (int i = 0; i < num_of_queries; i++) {
+  //   int max_freq = std::numeric_limits<int>::min();
+  //   int max_class;
+  //   for (auto &tree : predictions_[i]) {
+  //     for (auto &prediction : tree) {
+  //       std::cout << prediction.first << " " << prediction.second;
+  //       if (max_freq < prediction.second) {
+  //         max_class = prediction.first;
+  //         max_freq = prediction.second;
+  //       }
+  //     }
+  //     std::cout << std::endl;
+  //   }
+  //   // std::cout << max_class << " " << queries_target[i] << " id: " << i
+  //   //           << std::endl;
+  //   if (max_class == queries_target[i]) {
+  //     assertions += 1.0;
+  //   }
+  // }
+
+  // std::cout << assertions / num_of_queries << std::endl;
   return assertions / num_of_queries;
 
   // for (auto &tree: predictions_) {
@@ -320,8 +293,8 @@ int main() {
   std::cout << "Time building forest : " << duration / 1000.0 << std::endl;
 
   // delete forest;
-  // std::chrono::high_resolution_clock::time_point start_predict =
-  //     std::chrono::high_resolution_clock::now();
+  std::chrono::high_resolution_clock::time_point start_predict =
+      std::chrono::high_resolution_clock::now();
 
   // std::cout << "this is the prediction: "
   //           << forest.Predict(num_of_queries, queries_sample) << std::endl;
@@ -330,22 +303,22 @@ int main() {
   // queries_target);
   // std::cout << "Score => " << assertions / num_of_queries << std::endl;
 
-  std::cout << "Score => "
+  std::cout << "Score: "
             << forest.Score(num_of_queries, queries_sample, queries_target)
             << std::endl;
 
-  // std::chrono::high_resolution_clock::time_point end_predict =
-  //     std::chrono::high_resolution_clock::now();
-  // auto duration_p = std::chrono::duration_cast<std::chrono::milliseconds>(
-  //                       end_predict - start_predict)
-  //                       .count();
-  // std::cout << "Time for predicting : " << duration_p / 1000.0 << std::endl;
+  std::chrono::high_resolution_clock::time_point end_predict =
+      std::chrono::high_resolution_clock::now();
+  auto duration_p = std::chrono::duration_cast<std::chrono::milliseconds>(
+                        end_predict - start_predict)
+                        .count();
+  std::cout << "Time predicting: " << duration_p / 1000.0 << std::endl;
 
-  // for (int i = 0; i < forest.trees_.size(); i++) {
-  //   // std::cout << &forest.trees_[i] << std::endl;
-  //   free(forest.trees_[i]);
-  //   forest.trees_[i] = nullptr;
-  // }
+  for (int i = 0; i < static_cast<int>(forest.trees_.size()); i++) {
+    // std::cout << &forest.trees_[i] << std::endl;
+    free(forest.trees_[i]);
+    forest.trees_[i] = nullptr;
+  }
 
   return 0;
 }
