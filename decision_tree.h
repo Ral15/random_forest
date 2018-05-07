@@ -19,7 +19,7 @@ struct DecisionTree {
   ~DecisionTree(){
     delete rootNode_;
   };
-  int PredictTree(const std::vector<double> &query, Node *curr_node);     
+  static int PredictTree(const std::vector<double> &query, Node *curr_node);     
 };
 
 // void PrintTabs(int tabs) {
