@@ -1,8 +1,0 @@
-- 1.0 - 
-Time building forest : 33.034
-Time building forest : 33.478
-Time building forest : 30.427
-Time building forest : 31.074
-Time building forest : 32.109
-
-- 1.1 -

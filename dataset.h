@@ -5,7 +5,7 @@ struct DataSet {
   std::vector<std::vector<double>> data_;
   std::vector<int> target_values_;
   std::set<int> target_attributes_;
-  std::vector<int> masked_attributes_;
+  // std::vector<int> masked_attributes_;
   int num_of_features_;
   DataSet(){};
   DataSet(std::vector<std::vector<double>> &d, std::vector<int> &t_v,

@@ -13,10 +13,11 @@ struct DecisionTree {
   int id_;
   int max_depth_;
   Node *rootNode_;
-  Node *Build(const DataSet &d, int curr_depth, const std::vector<int> &sample_idxs);
-  DecisionTree(int m_d, int id, const DataSet &d, const std::vector<int> &sample_idxs): 
-  id_(id), max_depth_(m_d), rootNode_(Build(d, 0, sample_idxs)) {};
+  Node *Build(const DataSet &d, int curr_depth, const std::vector<int> &sample_idxs, const std::vector<int> &masked_attributes);
+  DecisionTree(int id, int m_d, const DataSet &d, const std::vector<int> &sample_idxs, const std::vector<int> &masked_attributes): 
+  id_(id), max_depth_(m_d), rootNode_(Build(d, 0, sample_idxs, masked_attributes)) {};
   ~DecisionTree(){
+    // delete recursively
     delete rootNode_;
   };
   static int PredictTree(const std::vector<double> &query, Node *curr_node);     
@@ -145,12 +146,12 @@ double GiniSplit(const DataSet &sample, const double feature_attribute,
 
 std::tuple<int, double, double> BestGini(
     const DataSet &sample, 
-    const std::vector<int> &sample_idxs) {
+    const std::vector<int> &sample_idxs, const std::vector<int> &masked_attributes) {
   double best_gini = std::numeric_limits<double>::max();
   double best_attr_indx = std::numeric_limits<double>::min();
   double attr_value_split = std::numeric_limits<double>::min();
   for (int i = 0; i < sample.num_of_features_; i++) {
-    if (sample.masked_attributes_[i]) {
+    if (masked_attributes[i]) {
       std::set<double> feature_attributes =
           GetFeatureAttributes(sample.data_, i);
       for (auto &attr : feature_attributes) {  // compute the gini index
@@ -177,23 +178,29 @@ int ShouldStop(const std::unordered_map<int, int> &frequency) {
   return freq_left;
 }
 
-
-
 Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
-                          const std::vector<int> &sample_idxs) {
+                          const std::vector<int> &sample_idxs, const std::vector<int> &masked_attributes) {
+
+  // std::cout << "?builddecstree" << std::endl;
+
   std::unordered_map<int, int> frequency =
       GetClassFrequency(sample, sample.target_attributes_, sample_idxs);
 
   const double sample_gini = GiniIndex(frequency, sample_idxs.size());
+
+  // std::cout << sample_gini << std::endl;
 
   Node *rootNode =
       new Node(sample_gini, curr_depth, sample_idxs.size(), frequency);
 
   if (curr_depth == max_depth_ || sample_gini == 0.0 ||
       ShouldStop(frequency)) {
+    // std::cout << curr_depth << " " << max_depth_ << std::endl;
     rootNode->Classify();
     return rootNode;
   }
+
+  // std::cout << curr_depth << std::endl;
 
   int attribute_index;
   double gini_val;
@@ -203,7 +210,7 @@ Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
   //     std::chrono::high_resolution_clock::now();
 
   std::tie(attribute_index, gini_val, attribute_value) =
-      BestGini(sample, sample_idxs);
+      BestGini(sample, sample_idxs, masked_attributes);
 
   // std::chrono::high_resolution_clock::time_point end =
   //     std::chrono::high_resolution_clock::now();
@@ -223,15 +230,14 @@ Node *DecisionTree::Build(const DataSet &sample, int curr_depth,
   rootNode->splitted_value_ = attribute_value;
   rootNode->is_leaf_ = false;
 
-  rootNode->left_child_ = Build(sample, curr_depth + 1, left_idxs);
-  rootNode->right_child_ = Build(sample, curr_depth + 1, right_idxs);
+  rootNode->left_child_ = Build(sample, curr_depth + 1, left_idxs, masked_attributes);
+  rootNode->right_child_ = Build(sample, curr_depth + 1, right_idxs, masked_attributes);
   return rootNode;
 }
 
 
 
 int DecisionTree::PredictTree(const std::vector<double> &query, Node *curr_node) { 
-  // std::cout << "??????" << std::endl;
   if (curr_node->is_leaf_) {
     int clss;
     double prob;
