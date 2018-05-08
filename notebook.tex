@@ -1,0 +1,717 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Report}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Simple implementation of a Random Forest for classification in
+C
+++}\label{simple-implementation-of-a-random-forest-for-classification-in-c}
+
+\subsection{Raúl Mar}\label{rauxfal-mar}
+
+\subsection{A00512318}\label{a00512318}
+
+    \paragraph{What is a Random Forest?}\label{what-is-a-random-forest}
+
+Random Forest is an ensemble algorithm for supervised classification and
+regression. The general method for Random Forests was first proposed by
+Tim Kam Ho in 1995, an extension of the algorithm was made later by Leo
+Breiman in 2001. Essentially, they are a modification of bagging that
+builds a large collection of of de-correlated trees, and then averages
+them. The main idea is to have a combination of weak tree predictors
+such that the features selected to split is chosen independently and
+with the same distribution for each of the trees in the forest in order
+to create a strong classifier.
+
+\begin{figure}
+\centering
+\includegraphics{https://cdn-images-1.medium.com/max/1600/0*tG-IWcxL1jg7RkT0.png}
+\caption{Random Forest Image}
+\end{figure}
+
+\subparagraph{Algorithm}\label{algorithm}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  For 1 to B where B is the number of trees to build in the forest
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Draw a bootstrap sample z of size n from the Data set.
+\item
+  Grow each tree by:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Selecting m features at random from the M features in the sample z
+  \item
+    Pick the best split point among the m
+  \item
+    Split the node into two children nodes
+  \item
+    Stop if we reached a pure node or if we reached the maximum depth
+    for the tree
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Output the ensemble of the trees
+\end{enumerate}
+
+The number of trees to create depends on the dataset and the user
+criteria. The m features to select is normally sqrt(lenght of total
+features in sample). The maximun depth for the tree should be at least
+\href{https://web.stanford.edu/~hastie/Papers/ESLII.pdf}{2}.
+
+The way in which we split the nodes can be done by calculating the gini
+index or the information gain. For this project I chose to split by
+calculating the gini index mainly because for the Laboratory 3 about
+Decision Trees, we implemented the information gain, so I wanted to try
+the other method to understand it better.
+
+\subparagraph{Gini Index}\label{gini-index}
+
+For computing the gini index, what we do is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For all the splitting features m we chose the one that gives the
+  maximum gini coeficient by:
+\item
+  We calculate for each of the attributes in feature m we pick the
+  attribute that gives the highest gini coeficient using this formula:
+\end{enumerate}
+
+\begin{align}
+\ Gini = 1- \sum\limits_{i=1}^K (P_k)^2  \\
+Where \ K \ is \ the \ set \ of \ all \ the \ attributes \ for \ a \ feature \ m.
+\end{align}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  We split by the feature m that gave the highest gini coeficient
+\end{enumerate}
+
+    \paragraph{What I did}\label{what-i-did}
+
+The main motivation for implementing from scratch a random forests in
+C++ was that I believe that by doing everything by myself without the
+use of any library, I can obtain a deeper understanding of how the
+algorithm works. I want to clarify that the implementation that I did
+does not cover the full functionalities of a Random Forest. My
+implementation is capable of:
+
+\begin{itemize}
+\tightlist
+\item
+  Building n trees in parallel each with sqrt(m) features where M is the
+  total number of features from the dataset.
+\item
+  Grow each tree by using the gini index as the splitting criterion
+\item
+  Stop splitting if we reach a pure node, or if the have reached the
+  max\_depth provided by the user.
+\item
+  Classify a query by querying each tree in parallel.
+\end{itemize}
+
+For it to be a full implementation of a Random Forest I would need to
+support: * Feature importance * OOB error * Regression * Support
+datasets with missing values
+
+\subparagraph{Dataset}\label{dataset}
+
+The dataset that I used in order to train/test and compare against
+scikit-learn implementation of Random Forests was
+\href{https://www.kaggle.com/iabhishekofficial/mobile-price-classification/data}{this}.
+The data set consists on 2000 records which describe the specifications
+of a mobile phone and classifies it in a price range:
+
+\begin{itemize}
+\tightlist
+\item
+  0(low cost)
+\item
+  1(medium cost)
+\item
+  2(high cost)
+\item
+  3(very high cost)
+\end{itemize}
+
+The dataset was divided into 70\%(1400 samples) for training and
+30\%(600 samples) for testing. The reason that I chose to split it in
+that way was because that is what I
+\href{https://www.kaggle.com/general/9456}{found} as the "normal" thing
+to to for random forests classifiers.
+
+    \paragraph{Results}\label{results}
+
+    In order to have some way of comparing my implementation, I opted for
+comparing against scikit-learn
+\href{http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html\#sklearn.ensemble.RandomForestClassifier}{implementation}
+of Random Forests Classifier, and the reason of that is because I have
+already used it in the past with different algorithms for different
+projects and I found it really easy to use and very well documented.
+Therefore, my aim is to create a similar implementation that works a lot
+like the one from scikit-learn.
+
+The tests that I performed where to measure building time, predicting
+time and score. I will show some graphics where we can see how miserable
+I did.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{This first batch of tests consist of building 10 forests. Each with first 1 }
+        \PY{l+s+sd}{tree, then 2, 3,......10 each with max depth of 2. The main intention of this }
+        \PY{l+s+sd}{was to see how accurate can a random forest be with small and short trees.}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} results for building forest with trees from 1 10 with max\PYZhy{}depth = 2}
+        \PY{n}{scikit\PYZus{}build\PYZus{}time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{0.11239409446716309}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{0.11244893074035645}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.1103048324584961}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{0.11242198944091797}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mf}{0.11184287071228027}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mf}{0.11103200912475586}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{0.11551380157470703}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mf}{0.11576175689697266}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{0.11564993858337402}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.1198725700378418}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{my\PYZus{}build\PYZus{}time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{1.567}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{1.447}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{1.539}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{2.149}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mf}{2.911}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mf}{3.708}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{8.441}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mf}{7.846}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{13.001}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{10.557}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} results for predicting forest with the same trees }
+        \PY{n}{sckikit\PYZus{}predict\PYZus{}time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{0.2633333333333333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{0.6066666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.495}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{0.7766666666666666}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mf}{0.5016666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mf}{0.6366666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{0.5516666666666666}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mf}{0.5116666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{0.545}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.77}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{my\PYZus{}predict\PYZus{}time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{0.069}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.072}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{0.074}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mf}{0.072}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mf}{0.083}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{0.073}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mf}{0.076}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{0.084}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.074}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} score from previous trees}
+        \PY{n}{sckikit\PYZus{}score} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{0.49}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{0.47}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.5116666666666667}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{0.545}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mf}{0.52}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mf}{0.5683333333333334}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{0.7066666666666667}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mf}{0.58}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{0.5266666666666666}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.695}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{my\PYZus{}score} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{0.256667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{0.815}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.805}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{0.813333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mf}{0.816667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mf}{0.728333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{0.823333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mf}{0.253333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{0.821667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{0.263333}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}
+        
+        
+        \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{]}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time in seconds}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of trees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time building forest with max\PYZhy{}depth 2 \PYZhy{} figure 1.0\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{scikit\PYZus{}build\PYZus{}time}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scikit\PYZhy{}learn}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{my\PYZus{}build\PYZus{}time}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{my\PYZus{}implementation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} <matplotlib.legend.Legend at 0x118b43e48>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_6_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    In the graph above, we can see how slow my implementation is when
+building each forest. The main reason of this is because of the way in
+which I am computing the split criterion. The way in which I'm doing it
+takes O(n**2) time complexity and space complexity O(n). I later found a
+post on
+\href{https://stats.stackexchange.com/questions/105487/the-efficiency-of-decision-tree}{post}
+on stackexchange that talks about how to improve the performance of a
+Random Forest. In that post they explain a O(n) time complexity
+algorithm for calculating the splitting criterion. Due to the limited
+amount of time I had and all the bugs that I had while coding this
+project, I was unable to implement the faster way of building the trees.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time in seconds}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of trees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time predicting forest with max\PYZhy{}depth 2 \PYZhy{} figure 1.2\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{sckikit\PYZus{}predict\PYZus{}time}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scikit\PYZhy{}learn}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{my\PYZus{}predict\PYZus{}time}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{my\PYZus{}implementation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} <matplotlib.legend.Legend at 0x118fafc18>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_8_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    In the figure above, we can see that for predicting, my implementation
+is faster, this is expected since Python is
+\href{https://www.quora.com/What-is-Python-written-in}{written in C},
+which leads to another conclusion that maybe not only the way in which
+I'm calculating the splitting criterion is slow, I think I have some
+very bad problems with memory management. Unfortunately I was unable to
+prove this though.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of trees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Score from predicting forest with max\PYZhy{}depth 2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{sckikit\PYZus{}score}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scikit\PYZhy{}learn}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{my\PYZus{}score}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{my\PYZus{}implementation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} <matplotlib.legend.Legend at 0x1191a0a20>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    For predicting, sometimes my implementation is better and sometimes
+worse.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+sd}{For the next tests,we now try with bigger forests, }
+         \PY{l+s+sd}{we start with 25 trees and keep building forests each time by }
+         \PY{l+s+sd}{incrementing the number of trees per forest by 25 until we reach 500 }
+         \PY{l+s+sd}{trees in a forest. Each forest was max\PYZus{}depth 10.}
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         
+         \PY{n}{scikit\PYZus{}build\PYZus{}time\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{0.14169907569885254}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{0.16149616241455078}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{75}\PY{p}{,} \PY{l+m+mf}{0.2878692150115967}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mf}{0.32459115982055664}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+m+mf}{0.3455038070678711}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mf}{0.47414708137512207}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{175}\PY{p}{,} \PY{l+m+mf}{0.50897216796875}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mf}{0.6480038166046143}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{0.7711877822875977}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,} \PY{l+m+mf}{0.7430751323699951}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{275}\PY{p}{,} \PY{l+m+mf}{0.9384067058563232}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mf}{0.8537948131561279}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{325}\PY{p}{,} \PY{l+m+mf}{0.9658739566802979}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{350}\PY{p}{,} \PY{l+m+mf}{1.2162902355194092}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{375}\PY{p}{,} \PY{l+m+mf}{1.3096709251403809}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mf}{1.2872178554534912}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{425}\PY{p}{,} \PY{l+m+mf}{1.2292540073394775}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{450}\PY{p}{,} \PY{l+m+mf}{1.311039924621582}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{475}\PY{p}{,} \PY{l+m+mf}{1.35695219039917}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mf}{1.4725921154022217}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+         \PY{n}{my\PYZus{}build\PYZus{}time\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{15.01}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{29.608}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{75}\PY{p}{,} \PY{l+m+mf}{42.202}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mf}{55.156}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+m+mf}{74.757}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mf}{94.441}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{175}\PY{p}{,} \PY{l+m+mf}{106.09}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mf}{120.511}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{132.117}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,} \PY{l+m+mf}{158.548}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{275}\PY{p}{,} \PY{l+m+mf}{172.363}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mf}{186.447}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{325}\PY{p}{,} \PY{l+m+mf}{189.227}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{350}\PY{p}{,} \PY{l+m+mf}{209.752}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{375}\PY{p}{,} \PY{l+m+mf}{199.446}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mf}{216.24}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{425}\PY{p}{,} \PY{l+m+mf}{260.016}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{450}\PY{p}{,} \PY{l+m+mf}{264.683}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{475}\PY{p}{,} \PY{l+m+mf}{278.791}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mf}{299.935}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} results for predicting forest with the same trees }
+         \PY{n}{sckikit\PYZus{}predict\PYZus{}time\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{0.10662674903869629}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{0.10692405700683594}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{75}\PY{p}{,} \PY{l+m+mf}{0.10454201698303223}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mf}{0.10660600662231445}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+m+mf}{0.10626888275146484}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mf}{0.1060628890991211}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{175}\PY{p}{,} \PY{l+m+mf}{0.10494303703308105}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mf}{0.1116788387298584}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{0.10396790504455566}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,} \PY{l+m+mf}{0.10534286499023438}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{275}\PY{p}{,} \PY{l+m+mf}{0.10752487182617188}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mf}{0.21181225776672363}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{325}\PY{p}{,} \PY{l+m+mf}{0.21249985694885254}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{350}\PY{p}{,} \PY{l+m+mf}{0.20537304878234863}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{375}\PY{p}{,} \PY{l+m+mf}{0.20955109596252441}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mf}{0.2091829776763916}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{425}\PY{p}{,} \PY{l+m+mf}{0.20935487747192383}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{450}\PY{p}{,} \PY{l+m+mf}{0.20930695533752441}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{475}\PY{p}{,} \PY{l+m+mf}{0.20959877967834473}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mf}{0.20958900451660156}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+         \PY{n}{my\PYZus{}predict\PYZus{}time\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{0.08}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{0.086}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{75}\PY{p}{,} \PY{l+m+mf}{0.095}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mf}{0.092}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+m+mf}{0.101}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mf}{0.094}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{175}\PY{p}{,} \PY{l+m+mf}{0.109}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mf}{0.112}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{0.116}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,} \PY{l+m+mf}{0.157}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{275}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mf}{0.137}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{325}\PY{p}{,} \PY{l+m+mf}{0.132}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{350}\PY{p}{,} \PY{l+m+mf}{0.141}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{375}\PY{p}{,} \PY{l+m+mf}{0.148}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mf}{0.148}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{425}\PY{p}{,} \PY{l+m+mf}{0.254}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{450}\PY{p}{,} \PY{l+m+mf}{0.156}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{475}\PY{p}{,} \PY{l+m+mf}{0.199}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mf}{0.192}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} score from previous trees}
+         \PY{n}{sckikit\PYZus{}score\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{0.835}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{0.8666666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{75}\PY{p}{,} \PY{l+m+mf}{0.8783333333333333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mf}{0.8716666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+m+mf}{0.88}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mf}{0.865}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{175}\PY{p}{,} \PY{l+m+mf}{0.8666666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mf}{0.8683333333333333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{0.885}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,} \PY{l+m+mf}{0.87}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{275}\PY{p}{,} \PY{l+m+mf}{0.88}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mf}{0.8783333333333333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{325}\PY{p}{,} \PY{l+m+mf}{0.88}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{350}\PY{p}{,} \PY{l+m+mf}{0.8733333333333333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{375}\PY{p}{,} \PY{l+m+mf}{0.885}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mf}{0.88}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{425}\PY{p}{,} \PY{l+m+mf}{0.87}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{450}\PY{p}{,} \PY{l+m+mf}{0.8783333333333333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{475}\PY{p}{,} \PY{l+m+mf}{0.8766666666666667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mf}{0.8766666666666667}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+         \PY{n}{my\PYZus{}score\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mf}{0.805}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{0.821667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mf}{0.825}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mf}{0.743333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+m+mf}{0.825}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mf}{0.661667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{175}\PY{p}{,} \PY{l+m+mf}{0.816667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mf}{0.731667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{225}\PY{p}{,} \PY{l+m+mf}{0.816667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,} \PY{l+m+mf}{0.815}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{275}\PY{p}{,} \PY{l+m+mf}{0.8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mf}{0.826667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{325}\PY{p}{,} \PY{l+m+mf}{0.745}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{350}\PY{p}{,} \PY{l+m+mf}{0.568333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{375}\PY{p}{,} \PY{l+m+mf}{0.808333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{400}\PY{p}{,} \PY{l+m+mf}{0.816667}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{425}\PY{p}{,} \PY{l+m+mf}{0.83}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{450}\PY{p}{,} \PY{l+m+mf}{0.82}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{475}\PY{p}{,} \PY{l+m+mf}{0.743333}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mf}{0.72}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time in seconds}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of trees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time building forest with max\PYZhy{}depth 10}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{scikit\PYZus{}build\PYZus{}time\PYZus{}2}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scikit\PYZhy{}learn}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{my\PYZus{}build\PYZus{}time\PYZus{}2}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{my\PYZus{}implementation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} <matplotlib.legend.Legend at 0x1193a8be0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_13_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Now, with bigger forests we can see how almost exponentially slower is
+my implementation. Scikit-learn looks like it always takes the same
+time.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time in seconds}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of trees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time predicting forest with max\PYZhy{}depth 10}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{sckikit\PYZus{}predict\PYZus{}time\PYZus{}2}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scikit\PYZhy{}learn}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{my\PYZus{}predict\PYZus{}time\PYZus{}2}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{my\PYZus{}implementation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} <matplotlib.legend.Legend at 0x1193fbd30>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_15_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    For predicting big forests, my implementation seems to outperform the
+other one when the size of the forest reaches 200.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time in seconds}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of trees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Score from predicting forest with max depth 10}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{sckikit\PYZus{}score\PYZus{}2}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scikit\PYZhy{}learn}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{o}{*}\PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{my\PYZus{}score\PYZus{}2}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{my\PYZus{}implementation}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} <matplotlib.legend.Legend at 0x119774668>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_17_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    For predicting, my implementation is doing terrible compared to the one
+from scikit-learn. Also, it is not stable, it goes up and down by a lot
+while the other one keeps within the same range of score.
+
+    \paragraph{Conclusion}\label{conclusion}
+
+I am dissapointed on how bad I did against scikit-learn implementation.
+I naively though that I could outperform it or at least have similar
+benchmarks. It is true that the one form scikit-learn is optimized and
+has been refactorized by a lot of developers and optimized to work fast.
+During the summer I still want to keep working on this project and try
+to at least take the times closer to scikit-learn's Random Forest
+Classifier, as well as:
+
+\begin{itemize}
+\item
+  As I already mentioned, change the way in how the splitting attribute
+  is chosen, right now the complexity for that is O(n**2), this is why
+  it is so slow. There is a
+  \href{https://stats.stackexchange.com/questions/105487/the-efficiency-of-decision-tree}{way}
+  in which we can make it O(n), which will reduce the computing time for
+  the splitting criterion reduce a lot.
+\item
+  Implement the functionality of telling which features are the most
+  important. This is a key property of Random Forests.
+\item
+  Use new C++11 smart pointers instead of old-pointers, code will look
+  cleaner and memory management will be optimized, as well as improve
+  performance.
+\item
+  Add functionality to support missing values form the dataset.
+\item
+  Create exceptions when calling the classes so that it can work like
+  the implementation from
+  \href{http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html\#sklearn.ensemble.RandomForestClassifier.predict}{scikit-learn}
+\item
+  Document the whole project better so in the future people can actually
+  use it.
+\end{itemize}
+
+    \paragraph{References}\label{references}
+
+    \begin{itemize}
+\tightlist
+\item
+  https://stats.stackexchange.com/questions/105487/the-efficiency-of-decision-tree
+\item
+  https://github.com/scikit-learn/scikit-learn/blob/a24c8b46/sklearn/ensemble/forest.py\#L518
+\item
+  https://www.stat.berkeley.edu/users/breiman/randomforest2001.pdf
+\item
+  https://web.stanford.edu/\textasciitilde{}hastie/Papers/ESLII.pdf
+\item
+  https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/
+\item
+  http://ect.bell-labs.com/who/tkh/publications/papers/odt.pdf
+\item
+  http://blog.citizennet.com/blog/2012/11/10/random-forests-ensembles-and-performance-metrics
+\item
+  https://www.stat.berkeley.edu/\textasciitilde{}breiman/RandomForests/cc\_home.htm
+\item
+  https://cs.brown.edu/courses/cs123/docs/helpsessions/intermediate.pdf
+\item
+  https://github.com/scikit-learn/scikit-learn/issues/1435
+\end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

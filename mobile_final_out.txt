@@ -1,2 +1,6 @@
-Time building forest : 70.369
-Score => 0.845
+Max Depth Trees: 5
+0
+Time building forest : 13.663
+Score: 0.58
+Time predicting: 0.074
+1
